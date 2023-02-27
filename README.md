@@ -40,3 +40,19 @@ Este archivo contiene una estructura Nodo_lista_doble el cual almacena el bojeto
 
 ### Lista_doble.go
 Este archivo contiene los metodos para el funcionamiento de la lista doble y una estructura Lista_doble el cual contiene los nodos Nodo_lista_doble (First y Last) y tambien el tamaño de la Lista_doble. Los metodos que contiene son Insertar el cual agrega un estudiante aceptado a la lista doble con su respectiva pila. Tiene un metodo Verificar_repetido el cual verifica si un carnet esta repetido en la lista doble y retorna un true si ya existe un estudiante con el mismo carnet, y false en caso contrario. Contiene un metodo Imprimir el cual muestra en consola los datos de los estudiantes aceptados. Contiene el metodo Ordenar el cual ordena los estudiantes por carnet por medio del metodo burbuja. Contiene el metodo Buscar_Alumno el cual busca un alumno en la lista doble y lo retorna en caso de encontrarlo, utiliza el metodo de busqueda binaria. Y por ultimo contiene el metodo Graficar el cual crea el texto para el archivo .dot.
+
+
+## Carpeta Objects
+Esta carpeta contiene los archivos de los objetos Alumno y Bitacora, el archivo Alumnos.go Contiene los siguientes datos para los alumnos: Nombre, Apellido, Carnet y Contrasena. El archivo Bitacoras.go contiene los siguietnes datos para la bitacora: Nombre, Fecha y Hora.
+
+## Carpeta Pila
+Esta carpeta contiene los archivos para la estructura de una Pila, los cuales sirven para la bitacora del admin y del estudiante. Los cuales son los siguientes:
+
+### Nodo_pila.go
+Este archivo contiene una estructura llamada Nodo_Pila el cual almacena los datos para la bitacora y un apuntador Anterior.
+
+### Pila.go
+Este archivo contiene los metodos para la Pila. Contiene el metodo Push el cual inserta los datos en la Pila. Tambien contiene el metodo Graficar, el cual crea el texto para el archivo .dot.
+
+### Archivo main.go
+Este archivo contiene las funcionalidades principales del administrador, como inicio de sesion, crear los reportes, carga masiva de estudiantes, ver estudiantes en consola, ver estudiantes pendientes por aceptar/rechazar.
