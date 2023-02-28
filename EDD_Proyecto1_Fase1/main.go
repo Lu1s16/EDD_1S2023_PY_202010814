@@ -42,7 +42,7 @@ func Crear_json(Estudiantes *Lista_doble.Lista_doble) {
 
 			} else {
 
-				data += `{  "Nombre": ` + `"` + temp.Alumno.Nombre + " " + temp.Alumno.Apellido + `",  ` + `"Carnet": ` + `"` + temp.Alumno.Carnet + `",  ` + `"Password": ` + `"` + temp.Alumno.Carnet + `",  ` + `"Carpeta_Raiz": "/"   }, `
+				data += `{  "Nombre": ` + `"` + temp.Alumno.Nombre + " " + temp.Alumno.Apellido + `",  ` + `"Carnet": ` + `"` + temp.Alumno.Carnet + `",  ` + `"Password": ` + `"` + temp.Alumno.Contrasena + `",  ` + `"Carpeta_Raiz": "/"   }, `
 
 			}
 
