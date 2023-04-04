@@ -1,3 +1,4 @@
+/*-----------------Login------------------*/
 .container {
 	max-width: 500px;
 	margin: 0 auto;
@@ -50,4 +51,253 @@ button[type="submit"]:hover {
 	margin-top: 20px;
 	color: red;
 	font-weight: bold;
+}
+
+
+/*-----------------Usuario------------------*/
+.pagusuario {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#carpetas {
+	height: 500px;
+    width: 800px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#matriz {
+	height: 700px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#arbol_n-ario {
+	height: 700px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#Crear_carpeta {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 250px;
+
+
+}
+
+#Eliminar_carpeta {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 300px;
+
+
+}
+
+#Reporte_carpetas {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 350px;
+
+
+}
+
+#Reporte_archivos {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 400px;
+
+
+}
+
+#buscador {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 200px;
+	top: 40px;
+
+}
+
+#cerrar_sesion_user {
+	background-color: #1db7bd; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1000px;
+	top: 40px;
+}
+
+
+/*-------------------------------------------------Admin------------------------------------------------*/
+.pagAdmin {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	position: absolute;
+    left: 200px;
+    top: 100px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.tabla_estudiantes {
+	height: 500px;
+    width: 400px;
+    background-color: rgb(16, 235, 235);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	left: 400px;
+    top: 100px;
+
+}
+
+#arbol_avl {
+	height: 700px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#cerrar_sesion_admin {
+	background-color: #1db7bd; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+#In-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Post-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Pre-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Graficar_Arbol_avl {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+
+#Cargar_estudiantes{
+	background-color: #dce4dd; /* Color de fondo */
+    color: rgb(0, 0, 0); /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+
+}
+
+#texto_administrador{
+	font-size: 30px;
+	padding: 10px;
+
+
+}
+
+#texto_cargar_estudiantes{
+	font-size: 20px;
+	
 }

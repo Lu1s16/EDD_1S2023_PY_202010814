@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario de inicio de sesión</title>
+	<link rel="stylesheet" type="text/css" href="EDD_Proyecto1_Fase2/home.css">
+</head>
+<body>
+
+	<!---------------------------Login----------------------------------------->
+
+	<div class="container" id="container" style="display:block;">
+		<h2>Inicio de sesión</h2>
+		<form id="login-form" action="#" method="POST">
+			<label for="username">Nombre de usuario:</label>
+			<input type="text" id="username" name="username" required>
+			<label for="password">Contraseña:</label>
+			<input type="password" id="password" name="password" required>
+			<button type="submit" id="login-button">Iniciar sesión</button>
+		</form>
+		<p id="message"></p>
+	</div>
+
+	<!--------------------------Admin-------------------------------------------->
+	<div class="pagAdmin" id="pagAdmin" style="display:none;">
+		<center><h2 id="texto_administrador">Administrador</h2></center>
+
+		<button name="button" id="In-Orden">Mostrar estudiantes In-Orden</button>
+		<button name="button" id="Post-Orden">Mostrar estudiantes Post-Orden</button>
+		<button name="button" id="Pre-Orden">Mostrar estudiantes Pre-Orden</button>
+		<button name="button" id="Graficar_Arbol_avl">Graficar Arbol AVL</button>
+		<button name="button" id="cerrar_sesion_admin">Regresar</button>
+		<h4 id="texto_cargar_estudiantes">Cargar estudiantes</h4>
+		<input type="file" id="Cargar_estudiantes">
+
+		<center>
+			<div class = "tabla_estudiantes">
+			<center><h2>Estudiantes</h2></center>
+
+			</div>
+		</center>
+		
+
+		<div id="arbol_avl">
+			<center><h2>Reporte estudiantes</h2></center>
+
+		</div>
+		
+
+	</div>
+
+	<!--------------------------Usuario-------------------------------------------->
+
+	<div class="pagusuario" id="pagusuario" style="display:none;">
+		<center><h2>Bienvenido</h2></center>
+
+		<button name="button" id="buscador">Buscar</button>
+		<input type="text" size="10" id="miInput" value="Buscador" onfocus="if(this.value=='Buscador')this.value='';" onblur="if(this.value=='')this.value='Buscador';">
+
+		<button name="button" id="Crear_carpeta">Crear carpeta</button>
+		<button name="button" id="Eliminar_carpeta">Eliminar carpeta</button>
+		<button name="button" id="Reporte_carpetas">Reporte carpetas</button>
+		<button name="button" id="Reporte_archivos">Reporte archivos</button>
+		<button name="button" id="cerrar_sesion_user">Regresar</button>
+		<h4>Subir archivo</h4>
+		<input type="file">
+
+		
+			<div id="carpetas">
+				<h2>Carpetas/archivos</h2>
+				
+			</div>
+			
+		
+		
+
+		
+
+		<div id="matriz">
+			<h2>Reporte matriz</h2>
+			
+		</div>
+		<div id="arbol_n-ario">
+			<h2>Reporte arbol n-ario</h2>
+			
+		</div>
+
+
+
+
+	</div>
+
+
+	<!---------------------------Links------------------------------------------->
+	<script src="EDD_Proyecto1_Fase2/index.js"></script>
+</body>
+</html>
