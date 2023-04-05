@@ -204,6 +204,7 @@ button[type="submit"]:hover {
 .tabla_estudiantes {
 	height: 500px;
     width: 400px;
+    overflow: scroll;
     background-color: rgb(16, 235, 235);
     border-radius: 15px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
@@ -215,6 +216,7 @@ button[type="submit"]:hover {
 #arbol_avl {
 	height: 700px;
     width: 1000px;
+    overflow: scroll;
     background-color: rgb(16, 235, 235);
 	border-radius: 15px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
