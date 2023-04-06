@@ -290,6 +290,33 @@ class AVL{
 
     }
 
+    retornar_estudiante(carnet, pass){
+
+        return this.retornarestudiante(this.raiz, carnet, pass);
+
+    }
+
+    retornarestudiante(nodo, carnet, password){
+
+        if(!nodo){
+            return null;
+        }
+
+        if(nodo.carnet == parseInt(carnet) && nodo.password == password){
+            return nodo;
+
+        } 
+
+        if(carnet < nodo.carnet){
+            return this.retornarestudiante(nodo.izquierda, carnet, password);
+        } else {
+            return this.retornarestudiante(nodo.derecha, carnet, password)
+        }
+
+    }
+
+
+
 
     //grafica del arbol
 

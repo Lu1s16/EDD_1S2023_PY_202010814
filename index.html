@@ -8,6 +8,7 @@
 
 	<!---------------------------Login----------------------------------------->
 
+	
 	<div class="container" id="container" style="display:block;">
 		<h2>Inicio de sesión</h2>
 		<form id="login-form" action="#" method="POST">
@@ -56,19 +57,29 @@
 		<button name="button" id="buscador">Buscar</button>
 		<input type="text" size="10" id="miInput" value="Buscador" onfocus="if(this.value=='Buscador')this.value='';" onblur="if(this.value=='')this.value='Buscador';">
 
+		<input type="text" id="carpeta_nueva">
 		<button name="button" id="Crear_carpeta">Crear carpeta</button>
+		
+		<input type="text" id="folder_deleted">
 		<button name="button" id="Eliminar_carpeta">Eliminar carpeta</button>
 		<button name="button" id="Reporte_carpetas">Reporte carpetas</button>
 		<button name="button" id="Reporte_archivos">Reporte archivos</button>
 		<button name="button" id="cerrar_sesion_user">Regresar</button>
 		<h4>Subir archivo</h4>
-		<input type="file">
+		
+		
+		<input type="file" name="archivo" id="archivo">
+			
+		<button id="submit_file">Subir</button>
+		
 
 		
 			<div id="carpetas">
 				<h2>Carpetas/archivos</h2>
 				
 			</div>
+			
+			
 			
 		
 		
@@ -91,6 +102,7 @@
 
 
 	<!---------------------------Links------------------------------------------->
+	
 	<script type="module" src="EDD_Proyecto1_Fase2/index.js"></script>
 </body>
 </html>
