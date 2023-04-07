@@ -376,7 +376,7 @@ function subir_archivo(){
 		console.log("esta repetido")
 		copia_archivo++
 
-		nombre_ruta_archivo+="_copia("+copia_archivo+")"
+		nombre_ruta_archivo+="_copia"+copia_archivo
 
 		nodo_carpeta.archivos.Insertar_archivo(nombre_ruta_archivo)
 
@@ -472,9 +472,11 @@ function otorgar_permisos() {
 		nodo_carpeta.archivos.Insertar(file, user, permiso)
 		//console.log(nodo_carpeta.archivos.graficar("hola"))
 		//nodo_carpeta.archivos.graficar_2(nodo_carpeta.folderName)
+		alert("Se otorgaron permisos correctamente")
 		
 	} else {
 		console.log("Error")
+		alert("Error Ussuario/archivo no existen")
 	}
 	
 
