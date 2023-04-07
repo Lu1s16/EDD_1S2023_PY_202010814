@@ -13,6 +13,7 @@ Esta pagina muestra las diferentes funciones que tiene el administrador. Las cua
 
 ### Cargar estudiantes
 permite al administrador subir un archivo json para cargar los estudiantes. Al cargarse se mostrara una tabla con el recorrido in-orden, este mostrara el nombre y carnet de cada estudiante.
+
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/qM6S6Kr.png)
 
 ### Mostrar estudiantes in-orden
