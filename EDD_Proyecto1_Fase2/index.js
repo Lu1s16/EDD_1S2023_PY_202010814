@@ -51,8 +51,14 @@ form.addEventListener('submit', function(event) {
 			var carpetas_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 			div_carpetas.innerHTML = carpetas_individuales
 
+			
+
 			//obtengo el nodo carpeta raiz
 			nodo_carpeta = estudiante_actual.carpetas.getFolder(ruta_actual)
+
+			//Crear tarjetas de archivos que existan
+			var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+			div_carpetas.innerHTML+=archivo_individuales
 			
 
 			//reseteo los divs de reportes
@@ -274,14 +280,16 @@ function buscar_carpeta(){
 
 		ruta_actual = ruta;
 		
-		//Crea tarjeta carpeta
-		var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
-		div_carpetas.innerHTML = carpeta_individuales
+		
 	}
+
+	//Crea tarjeta carpeta
+	var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
+	div_carpetas.innerHTML = carpeta_individuales
 
 	//Crear tarjetas de archivos
 	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
-	div_carpetas.innerHTML+=archivo_individuales
+	div_carpetas.innerHTML += archivo_individuales
 
 	copia_archivo = 0
 	
