@@ -29,12 +29,21 @@ Con este boton la tabla que se mostraba al cargar el archivo json se actualizara
 Este boton permite al administrador generar una grafica del arbol avl. A continuacion se muestra un ejemplo de como se veria un arbol avl al momento de graficarlo
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/M23VXmf.png)
 
-
-
-### 
-
 ## Estudiante
 El estudiante cuenta con la funcion de crear carpetas ingresando el nombre, eliminar carpetas ingresando el nombre de no existir se mostrara un alerta de erorr, subir archivos, tambien un area donde podra ver las carpetas creadas y archivos subidos. Tambien con un area donde podra otorgar permisos, ingresando el carnet del usuario, el nombre del archivo y el permiso que desea otorgar.
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/iD7myyM.png)
+
+El estudiante tambien tendra la opcion de generar un reporte de una lista circular el cual contiene las acciones que realizo como tambien la fecha y hora en la que se realizo. Tambien puede generar un reporte de carpetas el cual muestra las carpetas creadas y por ultimo un reporte de permisos el cual muestra los la matriz con el carnet y archivo que se dio permiso. A continuacion se muestra ejemplos de los reportes
+
+
+
+### Repporte carpetas
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/MHYUewC.png)
+
+### Reporte matriz
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/M23VXmf.png)
+
+### Reporte Bitacora
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/XHBpGIr.png)
 
 
