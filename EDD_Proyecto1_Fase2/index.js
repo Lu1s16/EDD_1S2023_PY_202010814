@@ -52,7 +52,7 @@ form.addEventListener('submit', function(event) {
 			div_carpetas.innerHTML = carpetas_individuales
 
 			//obtengo el nodo carpeta raiz
-			nodo_carpeta = estudiante_actual.carpetas.getFolder("/")
+			nodo_carpeta = estudiante_actual.carpetas.getFolder(ruta_actual)
 			
 
 			//reseteo los divs de reportes
