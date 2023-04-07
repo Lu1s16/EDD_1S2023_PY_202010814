@@ -4,7 +4,7 @@ A continuacion se muestra un manual donde se explica con detalle las funcionaida
 ## Login
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Hs8GzBv.png)
 
-Esta pagina permite al ususario iniciar sesion como administrador o como estudiante.
+Esta pagina permite al ususario iniciar sesion como administrador o como estudiante, para iniciar sesion como estudiante debera ingresar su carnet y contraseña, en el caso de ser administrador debera ingresar "admin" como usuario y "admin" como contraseña
 
 ## Admin
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/25F3tdc.png)
@@ -12,7 +12,7 @@ Esta pagina permite al ususario iniciar sesion como administrador o como estudia
 Esta pagina muestra las diferentes funciones que tiene el administrador. Las cuales son las siguientes
 
 ### Cargar estudiantes
-permite al administrador subir un archivo json para cargar los estudiantes. Al cargarse se mostrara una tabla con el recorrido in-orden
+permite al administrador subir un archivo json para cargar los estudiantes. Al cargarse se mostrara una tabla con el recorrido in-orden, este mostrara el nombre y carnet de cada estudiante.
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/qM6S6Kr.png)
 
 ### Mostrar estudiantes in-orden
@@ -41,7 +41,7 @@ El estudiante tambien tendra la opcion de generar un reporte de una lista circul
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/MHYUewC.png)
 
 ### Reporte matriz
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/M23VXmf.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/r38r0jL.png)
 
 ### Reporte Bitacora
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/XHBpGIr.png)
