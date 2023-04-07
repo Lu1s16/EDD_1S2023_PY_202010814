@@ -460,10 +460,10 @@ function otorgar_permisos() {
 	if(lectura.checked && escritura.checked){
 		permiso = "r-w"
 	} else if(lectura.checked){
-		permiso = "w"
+		permiso = "r"
 
 	} else if(escritura.checked){
-		permiso = "r"
+		permiso = "w"
 	}
 
 	//console.log("-----")
