@@ -10,6 +10,7 @@ var arbol_estudiantes = new AVL();
 
 var estudiante_actual
 var nodo_carpeta;
+var ruta_actual;
 
 
 //--------------------------------------Login---------------------------------------
@@ -45,8 +46,9 @@ form.addEventListener('submit', function(event) {
 			document.getElementById("pagusuario").style.display = "block";
 
 			//Creo las tarjetas de carpeta que existan en la ruta "/"
+			ruta_actual = "/";
 			var div_carpetas = document.getElementById("carpetas")
-			var carpetas_individuales = estudiante_actual.carpetas.show_folders("/");
+			var carpetas_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 			div_carpetas.innerHTML = carpetas_individuales
 
 			//obtengo el nodo carpeta raiz
@@ -196,7 +198,7 @@ input_usuarios.addEventListener("change", Leer_usuarios)
 
 //-------------------------------------Usuario---------------------------------------
 
-var ruta_actual = "/";
+
 
 
 //botones con sus funciones
