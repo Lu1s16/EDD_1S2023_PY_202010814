@@ -64,6 +64,7 @@
 		<button name="button" id="Eliminar_carpeta">Eliminar carpeta</button>
 		<button name="button" id="Reporte_carpetas">Reporte carpetas</button>
 		<button name="button" id="Reporte_archivos">Reporte archivos</button>
+		<button name="button" id="Reporte_bitacora">Reporte bitacora</button>
 		<button name="button" id="cerrar_sesion_user">Regresar</button>
 		<h4>Subir archivo</h4>
 		
@@ -74,16 +75,11 @@
 		
 
 		
-			<div id="carpetas">
-				<h2>Carpetas/archivos</h2>
+		<div id="carpetas">
+			<h2>Carpetas/archivos</h2>
 				
-			</div>
+		</div>
 			
-			
-			
-		
-		
-
 		
 
 		<div id="matriz">
@@ -95,6 +91,31 @@
 			
 		</div>
 
+		<div id="lista_circular">
+			<h2>Reporte bitacora</h2>
+		</div>
+
+		<div id="permisos">
+			<center>
+				<h2>Permisos</h2>
+				<p>Usuario</p>
+				<input type="text" id="user_shared">
+				<p>Archivo</p>
+				<input type="text" id="file_shared">
+				
+				<input type="checkbox" id="Escritura" name="Escritura" value="Escritura">
+				<label for="Escritura">Escritura</label>
+
+				<input type="checkbox" id="Lectura" name="Lectura" value="Lectura">
+				<label for="Lectura">Lectura</label>
+
+				<button name="button" id="get_user">
+					Dar permisos
+				</button>
+			</center>
+			
+
+		</div>
 
 
 

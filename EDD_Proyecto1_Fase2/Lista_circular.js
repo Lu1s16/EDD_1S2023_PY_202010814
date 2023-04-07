@@ -47,10 +47,80 @@ class ListaCircular{
         var cont = 0;
 
         while(cont < this.size){
-            console.log(actual);
+            console.log(actual.accion);
+            console.log(actual.fecha);
+            console.log(actual.hora);
+            console.log("---------")
             actual = actual.Siguiente;
             cont++;
         }
+    }
+
+    graficar(){
+
+        var grafica = ""
+        var nodos = ""
+        var uniones = ""
+
+        
+        var actual = this.Primero;
+        var cont = 0;
+        var id = 1;
+
+        //Creo nodos
+        while(cont < this.size){
+
+            nodos += "nodo_"+id+"[label=\" "+ actual.accion + "\n Fecha: " + actual.fecha + "\n Hora: "+ actual.hora + " \" shape=box];\n "
+
+
+            actual = actual.Siguiente;
+            cont++;
+            id++
+
+            
+        }
+
+        //Creo uniones
+        
+        var primero = 1
+        cont = 0
+        id = 1
+
+        while(cont < this.size){
+
+
+            cont++
+            
+
+            if(cont == this.size){
+
+                uniones+="nodo_"+id+"->nodo_"+primero+";\n"
+
+            } else {
+                var id_next = id+1;
+                uniones+="nodo_"+id+"->nodo_"+id_next+":\n"
+
+            }
+            id++
+
+
+        }
+
+        //uno todo en un solo string
+        grafica+=nodos+"{rank=same;\n"+uniones+"}\n";
+
+        var graphviz = "<h2>Reporte bitacora</h2><img id=\"image_lista_circular\"\n"+
+        "   src=\'https://quickchart.io/graphviz?graph=digraph{"+ grafica +"}\'"+
+        " />"
+
+        return graphviz
+
+
+
+
+
+
+
     }
 
     Imprimir_desde_un_nodo(_nodo){

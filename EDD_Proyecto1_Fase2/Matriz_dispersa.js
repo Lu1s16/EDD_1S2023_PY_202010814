@@ -1,6 +1,7 @@
 class Nodo_Cabecera{
-    constructor(id){
-        this.id = id;
+    constructor(archivo){
+        //id es el archivo
+        this.archivo = archivo;
         this.siguiente = null
         this.anterior = null
         this.acceso = null
@@ -32,12 +33,12 @@ class Lista_Cabecera{
             this.ultimo = nuevo
         }
         else{
-            if(nuevo.id < this.primero.id){
+            if(nuevo.archivo < this.primero.archivo){
                 nuevo.siguiente = this.primero
                 this.primero.anterior = nuevo
                 this.primero = nuevo
             }
-            else if(nuevo.id > this.ultimo.id){
+            else if(nuevo.archivo > this.ultimo.archivo){
                 this.ultimo.siguiente = nuevo
                 nuevo.anterior = this.ultimo
                 this.ultimo = nuevo
@@ -45,17 +46,18 @@ class Lista_Cabecera{
             else {
                 var tmp = this.primero
                 while(tmp != null){
-                    if(nuevo.id < tmp.id){
+                    if(nuevo.archivo < tmp.archivo){
                         nuevo.siguiente = tmp
                         nuevo.anterior = tmp.anterior
                         tmp.anterior.siguiente = nuevo
                         tmp.anterior = nuevo
                         break
                     }
-                    else if(nuevo.id > tmp.id){
+                    else if(nuevo.archivo > tmp.archivo){
                         tmp = tmp.siguiente
                     }
                     else{
+                        //no inserta repetidos
                         break
                     }
                 }
@@ -63,24 +65,138 @@ class Lista_Cabecera{
         }
     }
 
+    isEmpty(){
+        if(this.primero == null){
+            return true
+        } else {
+            return false
+        }
+    }
+
     mostrarCabecera(){
         var tmp = this.primero
         while(tmp != null){
-            console.log("cabecera " + this.tipo + tmp.id)
+            console.log("cabecera " + this.tipo + tmp.archivo)
             tmp = tmp.siguiente
         }
     }
 
-    getCabecera(_id){
+    crear_tarjeta_archivo(){
+        var contenido = ""
         var tmp = this.primero
         while(tmp != null){
-            if(_id == tmp.id){
+
+            console.log(tmp.archivo)
+
+            if(tmp.archivo.includes(".txt")){
+
+                contenido += `
+                <div id="tarjeta_archivo">
+                    <div id="imagen_archivo_txt">
+                    </div>
+
+                    <center><p>${tmp.archivo}</p></center>
+
+
+	                <center>
+	                <a href="${tmp.archivo}" download="${tmp.archivo}">
+	                    <button type="button">Descargar</button>
+	                </a>
+                    </center>
+                </div>
+	            `
+
+            } else if(tmp.archivo.includes(".pdf")){
+                contenido += `
+                <div id="tarjeta_archivo">
+                    <div id="imagen_archivo_pdf">
+                    </div>
+                    <center><p>${tmp.archivo}</p></center>
+
+	                <center>
+	                <a href="${tmp.archivo}" download="${tmp.archivo}">
+	                    <button type="button">Descargar</button>
+	                </a>
+                    </center>
+                </div>
+	            `
+            } else if(tmp.archivo.includes(".png")){
+                contenido += `
+                <div id="tarjeta_archivo">
+                    <div id="imagen_archivo_png">
+                    </div>
+
+                    <center><p>${tmp.archivo}</p></center>
+
+                    <center>
+	                <a href="${tmp.archivo}" download="${tmp.archivo}">
+	                    <button type="button">Descargar</button>
+	                </a>
+                    </center>
+                </div>
+	            `
+            } else if(tmp.archivo.includes(".jpeg")){
+                contenido += `
+                <div id="tarjeta_archivo">
+                    <div id="imagen_archivo_jpeg">
+                    </div>
+
+                    <center><p>${tmp.archivo}</p></center>
+                    
+	                <center>
+	                <a href="${tmp.archivo}" download="${tmp.archivo}">
+	                    <button type="button">Descargar</button>
+	                </a>
+                    </center>
+                </div>
+	            `
+            }
+
+            
+
+
+            tmp = tmp.siguiente
+
+        }
+
+        return contenido
+    }
+
+
+    getCabecera(archivo){
+        var tmp = this.primero
+        while(tmp != null){
+            if(archivo == tmp.archivo){
+                //significa que ya existe la cabecera
                 return tmp
             }
             tmp = tmp.siguiente
         }
-
+        //no existe
         return null
+    }
+
+
+    //Verificar si ya existe
+    isExist(archivo){
+        
+        var tmp = this.primero
+        
+        while(tmp != null){
+            //console.log("---archivo de lista")
+            //console.log(tmp.archivo)
+            //console.log("******")
+            //console.log(archivo)
+            //console.log("entra al while")
+            if(archivo == tmp.archivo) {
+                return true
+            }
+
+            tmp = tmp.siguiente
+        }
+
+        return false
+
     }
 }
 
@@ -264,6 +380,61 @@ class Matriz_d{
 
 
     }
+    
+    //Verifica si ya esta repetido o existe
+    verificar_repetido(archivo){
+        
+        return this.filas.isExist(archivo)
+
+        
+    }
+
+    //Verificar existencia de archivos en la matriz
+    lista_vacia() {
+
+        return this.filas.isEmpty();
+
+    }
+
+    //verificar existencia de usuarios
+    users_vacia() {
+        return this.columnas.isEmpty();
+    }
+
+    tarjetas_archivos(){
+
+        return this.filas.crear_tarjeta_archivo()
+
+    }
+
+    //recorrer filas cabeceras
+    //Sirve para probar que cabeceras tiene la fila
+    //no tienen funcionalidad en el proyecto
+    recorrer_cabeceras_filas(){
+
+        this.filas.mostrarCabecera()
+
+    }
+    //metodo solo de pruebas
+    recorrer_cabeceras_columnas(){
+        this.columnas.mostrarCabecera()
+    }
+
+
+    Insertar_archivo(archivo){
+
+        //verifica si el archivo existe
+        //var nodo_X = this.filas.getCabecera(archivo)
+
+
+        
+        //aun no existe entonces se crea y se agrega
+        var nodo_X = new Nodo_Cabecera(archivo)
+        this.filas.insertar_cabecera(nodo_X)
+        
+
+    }
+
     recorridoPorFila(fila){
         var inicio = this.filas.getCabecera(fila)
 
@@ -294,6 +465,17 @@ class Matriz_d{
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
     graficar(nombre){
         var contenido = "digraph G{\n"+
         "node[shape=box, width=0.7, height=0.7, fontname=\"Arial\", fillcolor=\"white\", style=filled]\n"+
@@ -308,19 +490,23 @@ class Matriz_d{
         var posx = 0;
 
         while(pivote != null){
-            contenido += "\n\tnode[label = \"F"+ pivote.id + "\" fillcolor=\"azure3\" pos=\"-1, -"+ posx +"!\" shape=box]x"+ pivote.id +"; \n";
+
+            var id_archivo = pivote.archivo.replace(".", "")
+
+            contenido += "\n\tnode[label = \""+ pivote.archivo + "\" fillcolor=\"azure3\" pos=\"-1, -"+ posx +"!\" shape=box]x"+ id_archivo +"; \n";
             pivote = pivote.siguiente;
             posx++;
 
         }
         pivote = this.filas.primero;
+       
         while(pivote.siguiente != null){
-            contenido += " \n\tx"+ pivote.id +"->x"+ pivote.siguiente.id +"; \n";
-            contenido += " \n\tx"+ pivote.id +"->x"+ pivote.siguiente.id +"[dir=back];\n "
+            contenido += " \n\tx"+ pivote.archivo +"->x"+ pivote.siguiente.archivo +"; \n";
+            contenido += " \n\tx"+ pivote.archivo +"->x"+ pivote.siguiente.archivo +"[dir=back];\n "
             pivote = pivote.siguiente;
         }
 
-        contenido += " \n\traiz->x"+ this.filas.primero.id +";\n "
+        contenido += " \n\traiz->x"+ this.filas.primero.archivo +";\n "
 
 
         //Graficar nodos columnas
@@ -328,35 +514,38 @@ class Matriz_d{
         var posy = 0;
 
         while(pivotey != null){
-            contenido += " \n\tnode[label = \"C"+ pivotey.id +"\" fillcolor=\"azure3\" pos = \""+ posy +",1!\" shape = box]y"+ pivotey.id +"; \n"
+            contenido += " \n\tnode[label = \"C"+ pivotey.archivo +"\" fillcolor=\"azure3\" pos = \""+ posy +",1!\" shape = box]y"+ pivotey.archivo +"; \n"
             pivotey = pivotey.siguiente;
             posy+=1
         }
 
         pivotey = this.columnas.primero;
         while(pivotey.siguiente != null){
-            contenido += " \n\ty"+ pivotey.id +"->y"+ pivotey.siguiente.id +"; "
-            contenido += " \n\ty"+ pivotey.id +"->y"+ pivotey.siguiente.id +"[dir=back];"
+            contenido += " \n\ty"+ pivotey.archivo +"->y"+ pivotey.siguiente.archivo +"; "
+            contenido += " \n\ty"+ pivotey.archivo +"->y"+ pivotey.siguiente.archivo +"[dir=back];"
             pivotey = pivotey.siguiente
         }
 
         
 
-        contenido += " \n\traiz->y"+ this.columnas.primero.id +"; "
+        contenido += " \n\traiz->y"+ this.columnas.primero.archivo +"; "
 
+
+        
+        
         pivotey = this.columnas.primero;
 
         contenido+="{rank = same; raiz "
 
         if(pivotey.siguiente == null){
             //solo hay uno en la lista de cabeceras columnas
-            contenido+="y"+pivotey.id
+            contenido+="y"+pivotey.archivo
         } else {
 
             while(pivotey != null){
 
                 
-                contenido+=", y"+ pivotey.id +""            
+                contenido+=", y"+ pivotey.archivo +""            
     
                 pivotey = pivotey.siguiente
 
@@ -369,7 +558,12 @@ class Matriz_d{
         contenido+="}"
 
 
-
+        //voy por aqui
+        //voy por aqui
+        //voy por aqui
+        //voy por aqui
+        //voy por aqui
+        //voy por aqui
 
         //ya con las cabeceras graficadas
         //se grafica los nodos internos o celdas
@@ -378,7 +572,9 @@ class Matriz_d{
 
         pivote = this.filas.primero;
         posx = 0;
-        while(pivote != null){
+        while(pivote != null  ){
+            console.log("*********")
+            console.log(pivote)
             var pivote_celda = pivote.acceso;
             while(pivote_celda != null){
                 //----- buscamos posy
@@ -386,7 +582,7 @@ class Matriz_d{
                 var posy_celda = 0;
 
                 while(pivotey != null){
-                    if(pivote.id == pivote_celda.coordenadaY){
+                    if(pivote.archivo == pivote_celda.coordenadaY){
                         break
                     }
                     posy_celda++;
@@ -419,22 +615,39 @@ class Matriz_d{
 
             }
 
-            contenido += " \n\tx"+ pivote.id +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"; "
-            contenido += " \n\tx"+ pivote.id +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
-            rank_same+=" x"+pivote.id+", i"+ pivote.acceso.coordenadaX+"_"+ pivote.acceso.coordenadaY +"}\n";
-            contenido+=rank_same
-            rank_same = "{rank=same; "
+            if(pivote.acceso.coordenadaX != null){
+                console.log("--------")
+                console.log(pivote.acceso.coordenadaX)
+                console.log("--------")
+            
+                contenido += " \n\tx"+ pivote.archivo +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"; "
+                contenido += " \n\tx"+ pivote.archivo +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
+                rank_same+=" x"+pivote.archivo+", i"+ pivote.acceso.coordenadaX+"_"+ pivote.acceso.coordenadaY +"}\n";
+                contenido+=rank_same
+                rank_same = "{rank=same; "
+
+            }
+
+            
+                
+
+            
+
             pivote = pivote.siguiente;
             posx++;
 
+            
+
 
         }
+
+        //voy por aqui
 
         var pivote = this.columnas.primero;
 
         while(pivote != null){
             pivote_celda = pivote.acceso;
-            //console.log(pivote.id)
+            //console.log(pivote.archivo)
 
             while(pivote_celda != null){
 
@@ -451,8 +664,8 @@ class Matriz_d{
             
             }
 
-            contenido += " \n\ty"+ pivote.id +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"; "
-            contenido += " \n\ty"+ pivote.id +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
+            contenido += " \n\ty"+ pivote.archivo +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"; "
+            contenido += " \n\ty"+ pivote.archivo +"->i"+ pivote.acceso.coordenadaX +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
 
             pivote = pivote.siguiente;
 
@@ -464,6 +677,252 @@ class Matriz_d{
         return contenido;
     
     }   
+
+    graficar_2(carpeta){
+        var contenido = "digraph G{\n"+
+        "node[shape=box, width=0.7, height=0.7, fontname=\"Arial\", fillcolor=\"white\", style=filled]\n"+
+        "edge[style = \"bold\"]\n"+
+        "node[label = \"" + carpeta + "\" fillcolor=\"darkolivegreen1\" pos =\"-1,1!\"]raiz;\n"
+    
+        var pivote = this.filas.primero;
+        var posx = 0;
+        
+
+        //crear nodos de filas
+        while(pivote != null){
+
+            var conexion = pivote.archivo.replace(".", "")
+            
+            contenido += "\n\tnode[label = \""+ pivote.archivo + "\" fillcolor=\"azure3\" pos=\"-1, -"+ posx +"!\" shape=box]x_"+ conexion +"; \n";
+            pivote = pivote.siguiente;
+            
+            posx++;
+        }
+
+        pivote = this.filas.primero;
+        
+        var primer_archivo = 1;
+       
+        while(pivote.siguiente != null){
+            
+
+            var conexion = pivote.archivo.replace(".", "")
+            var conexion2 = pivote.siguiente.archivo.replace(".", "")
+
+            contenido += " \n\tx_"+ conexion +"->x_"+ conexion2 +"; \n";
+            contenido += " \n\tx_"+ conexion +"->x_"+ conexion2 +"[dir=back];\n "
+            pivote = pivote.siguiente;
+            
+        }
+
+
+        var primero = this.filas.primero.archivo.replace(".", "")
+
+        contenido += " \n\traiz->x_"+ primero+";\n "
+
+        var pivotey = this.columnas.primero;
+        var posy = 0;
+        
+        while(pivotey != null){
+            contenido += " \n\tnode[label = \" "+ pivotey.archivo +"\" fillcolor=\"azure3\" pos = \""+ posy +",1!\" shape = box]y_"+ pivotey.archivo +"; \n"
+            pivotey = pivotey.siguiente;
+            
+            posy+=1;
+        }
+
+        pivotey = this.columnas.primero;
+
+        while(pivotey.siguiente != null){
+            
+            contenido += " \n\ty_"+ pivotey.archivo +"->y_"+ pivotey.siguiente.archivo +"; "
+            contenido += " \n\ty_"+ pivotey.archivo +"->y_"+ pivotey.siguiente.archivo +"[dir=back];"
+            pivotey = pivotey.siguiente
+           
+        }
+
+        var primero = this.columnas.primero.archivo
+
+        contenido += " \n\traiz->y_"+ primero +"; "
+
+        pivotey = this.columnas.primero;
+        contenido+="{rank = same; raiz "
+
+        
+
+        
+        if(pivotey.siguiente == null){
+            //solo hay uno en la lista de cabeceras columnas
+            contenido+="y_"+pivotey.archivo
+        } else {
+
+            while(pivotey != null){
+
+                
+                contenido+=", y_"+ pivotey.archivo +""            
+    
+                pivotey = pivotey.siguiente
+                
+
+            }
+
+        }
+        contenido+="}"
+
+        var rank_same = "{rank=same; "
+        pivote = this.filas.primero;
+        posx = 0;
+        
+
+        
+        
+        while(pivote != null){
+            console.log("-----")
+            
+            
+
+            if(pivote.acceso != null){
+                //console.log("tiene conexiones")
+                //console.log(pivote)
+                
+
+                var pivote_celda = pivote.acceso;
+                while(pivote_celda != null){
+                    //Buscamos la posicion y
+                    pivotey = this.columnas.primero;
+                    var posy_celda = 0;
+
+                    while(pivotey != null){
+                        if(pivote.archivo == pivote_celda.coordenadaY){
+                            break
+                        }
+                        posy_celda++;
+                        
+                        pivotey = pivotey.siguiente
+                    }
+
+                    var conexxion = pivote_celda.coordenadaX.replace(".", "")
+
+                    contenido += " \n\tnode[label=\""+ pivote_celda.valor +"\" fillcolor=\"white\" pos = \""+ posy_celda +",-"+ posx +"!\" shape=box]i"+ conexxion +"_"+ pivote_celda.coordenadaY +"; "
+                    
+                    
+                    pivote_celda = pivote_celda.derecha
+                }
+
+                pivote_celda = pivote.acceso;
+
+                //unir los nodos con la felcha
+                while(pivote_celda != null){
+                    if(pivote_celda.derecha != null){
+                        var conexion = pivote_celda.coordenadaX.replace(".", "")
+                        contenido += " \n\ti"+ conexion +"_"+ pivote_celda.coordenadaY +"->i"+ conexion +"_"+ pivote_celda.derecha.coordenadaY +"; "
+                        contenido += " \n\ti"+ conexion +"_"+ pivote_celda.coordenadaY +"->i"+ conexion +"_"+ pivote_celda.derecha.coordenadaY +"[dir=back]; "
+                        rank_same+=" i"+ conexion+"_"+ pivote_celda.coordenadaY + "," + " i"+ conexion+"_"+ pivote_celda.derecha.coordenadaY+ ","
+                    }
+    
+                    pivote_celda = pivote_celda.derecha;
+
+                }
+
+                var conexion = pivote.acceso.coordenadaX.replace(".", "")
+
+                contenido += " \n\tx_"+ conexion +"->i"+ conexion +"_"+ pivote.acceso.coordenadaY +"; "
+                contenido += " \n\tx_"+ conexion +"->i"+ conexion +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
+                rank_same+=" x_"+conexion+", i"+ conexion +"_"+ pivote.acceso.coordenadaY +"}\n";
+                contenido+=rank_same
+                rank_same = "{rank=same; "
+
+
+                
+                posx++;
+                
+
+            } else {
+                //console.log("no tiene conexiones")
+                //console.log(pivote)
+            }
+
+            pivote = pivote.siguiente;
+            
+
+        
+        }
+
+        var pivote = this.columnas.primero;
+
+        while(pivote != null){
+            pivote_celda = pivote.acceso;
+
+            while(pivote_celda != null){
+
+                if(pivote_celda.abajo != null){
+
+                    var conexion = pivote_celda.coordenadaX.replace(".", "")
+                    var conexion2 = pivote_celda.abajo.coordenadaX.replace(".", "")
+
+                    contenido += " \n\ti"+ conexion +"_"+ pivote_celda.coordenadaY +"->i"+ conexion2 +"_"+ pivote_celda.abajo.coordenadaY +";"
+                    contenido += " \n\ti"+ conexion +"_"+ pivote_celda.coordenadaY +"->i"+ conexion2 +"_"+ pivote_celda.abajo.coordenadaY +"[dir=back];"
+
+
+                }
+
+                var conexion = pivote.acceso.coordenadaX.replace(".", "")
+
+                contenido += " \n\ty_"+ pivote.archivo +"->i"+ conexion +"_"+ pivote.acceso.coordenadaY +"; "
+                contenido += " \n\ty_"+ pivote.archivo +"->i"+ conexion +"_"+ pivote.acceso.coordenadaY +"[dir=back]; "
+
+                pivote_celda = pivote_celda.abajo;
+
+            }
+
+            pivote = pivote.siguiente;
+        }
+
+
+        return contenido+"}"
+    }
+
+
+
+
+
+
+    graficar_solo_archivos(carpeta){
+        var contenido = "digraph G{\n"+
+        "node[shape=box, width=0.7, height=0.7, fontname=\"Arial\", fillcolor=\"white\", style=filled]\n"+
+        "edge[style = \"bold\"]\n"+
+        "node[label = \"" + carpeta + "\" fillcolor=\"darkolivegreen1\" pos =\"-1,1!\"]raiz;\n"
+    
+        var pivote = this.filas.primero;
+        var posx = 0;
+        var pos_archivo = 1;
+
+        //crear nodos de filas
+        while(pivote != null){
+            var id_archivo = pivote.archivo.replace(".", "")
+            contenido += "\n\tnode[label = \""+ pivote.archivo + "\" fillcolor=\"azure3\" pos=\"-1, -"+ posx +"!\" shape=box]x_"+ pos_archivo +"; \n";
+            pivote = pivote.siguiente;
+            pos_archivo++;
+            posx++;
+        }
+
+        pivote = this.filas.primero;
+        var pos_archivo = 1;
+        var primer_archivo = 1;
+       
+        while(pivote.siguiente != null){
+            var siguiente_archivo = pos_archivo+1
+
+            contenido += " \n\tx_"+ pos_archivo +"->x_"+ siguiente_archivo +"; \n";
+            contenido += " \n\tx_"+ pos_archivo +"->x_"+ siguiente_archivo +"[dir=back];\n "
+            pivote = pivote.siguiente;
+            pos_archivo++
+        }
+
+        contenido += " \n\traiz->x_"+ primer_archivo+";\n "
+
+
+        return contenido+"}"
+    }
 
 
 

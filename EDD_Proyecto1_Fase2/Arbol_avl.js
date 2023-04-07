@@ -261,6 +261,32 @@ class AVL{
 
     }
 
+    verificar_existe(carnet){
+
+        return this.verificarexiste(this.raiz, carnet)
+
+    }
+
+    verificarexiste(nodo, carnet){
+
+        if(!nodo){
+            return false
+        }
+
+        if(nodo.carnet == parseInt(carnet)){
+            return true;
+        }
+
+        if(carnet < nodo.carnet){
+            return this.verificarexiste(nodo.izquierda, carnet)
+        } else {
+            return this.verificarexiste(nodo.derecha, carnet)
+        }
+
+
+
+    }
+
     
 
 
@@ -271,6 +297,7 @@ class AVL{
         return this.buscar_usuario(this.raiz, carnet, pass);
         
     }
+ 
 
     buscar_usuario(nodo, carnet, password){
 
@@ -289,6 +316,11 @@ class AVL{
         }
 
     }
+
+
+
+
+
 
     retornar_estudiante(carnet, pass){
 
@@ -325,6 +357,7 @@ class AVL{
     // src="https://quickchart.io/graphviz?graph=digraph{ a -> b }"
     // />
         
+        this.grafica = "";
         this.graficararbol(this.raiz);
 
         

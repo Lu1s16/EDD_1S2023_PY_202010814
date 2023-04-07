@@ -11,6 +11,7 @@ var arbol_estudiantes = new AVL();
 var estudiante_actual
 var nodo_carpeta;
 
+
 //--------------------------------------Login---------------------------------------
 
 form.addEventListener('submit', function(event) {
@@ -51,7 +52,17 @@ form.addEventListener('submit', function(event) {
 			//obtengo el nodo carpeta raiz
 			nodo_carpeta = estudiante_actual.carpetas.getFolder("/")
 			
+
+			//reseteo los divs de reportes
+			var contenedor_arbol_carpetas = document.getElementById("arbol_n-ario")
+			contenedor_arbol_carpetas.innerHTML = "<h2>Reporte carpetas</h2>"
 	
+			var contenedor_matriz = document.getElementById("matriz")
+			contenedor_matriz.innerHTML = "<h2>Reporte archivos</h2>"
+
+			var div_grafo_lista_circular = document.getElementById("lista_circular")
+			div_grafo_lista_circular.innerHTML = "<h2>Reporte bitacora</h2>"
+
 		} else {
 			message.innerText = 'Nombre de usuario o contraseña incorrectos.';
 			message.style.color = 'red';
@@ -141,6 +152,7 @@ function Leer_usuarios(){
 function graficar_arbol_url(){
 
 	var div_grafo = document.getElementById("arbol_avl")
+	
 	var grafo_arbol = arbol_estudiantes.graficar_arbol();
 
 	div_grafo.innerHTML = grafo_arbol;
@@ -187,12 +199,17 @@ input_usuarios.addEventListener("change", Leer_usuarios)
 var ruta_actual = "/";
 
 
-
+//botones con sus funciones
 document.getElementById("cerrar_sesion_user").onclick = close_user
 document.getElementById("Crear_carpeta").onclick = crear_carpeta
 document.getElementById("buscador").onclick = buscar_carpeta
 document.getElementById("Eliminar_carpeta").onclick = eliminar_carpeta
 document.getElementById("submit_file").onclick = subir_archivo
+document.getElementById("Reporte_bitacora").onclick = graficar_lista_cirular
+document.getElementById("get_user").onclick = otorgar_permisos
+document.getElementById("Reporte_archivos").onclick = graficar_matriz
+document.getElementById("Reporte_carpetas").onclick = graficar_arbol_carpetas
+
 
 function close_user() {
 	document.getElementById("container").style.display = "block";
@@ -214,15 +231,30 @@ function eliminar_carpeta(){
 	var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 	div_carpetas.innerHTML = carpeta_individuales
 
+	//Crear tarjetas de archivos
+	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	div_carpetas.innerHTML+=archivo_individuales
+
+	//agrego accion al reporte de lista circular
+	var today = new Date();
+	var accion = "Se elimino carpeta: "+folder
+	var fecha = today.toLocaleDateString("en-US");
+	var hora = today.toLocaleTimeString("en-US");
+	//console.log("-------")
+	//console.log("Accionn: "+accion)
+	//console.log("fecha: "+fecha)
+	//console.log("hora: "+hora)
+	estudiante_actual.bitacora.InsertarAlFinal(accion, fecha, hora);
 
 
 
 
 }
-
+var copia_archivo = 0;
 function buscar_carpeta(){
 
 	const ruta = document.getElementById("miInput").value
+	var div_carpetas = document.getElementById("carpetas")
 
 	//console.log(ruta)
 
@@ -239,10 +271,17 @@ function buscar_carpeta(){
 
 
 		ruta_actual = ruta;
-		var div_carpetas = document.getElementById("carpetas")
+		
+		//Crea tarjeta carpeta
 		var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 		div_carpetas.innerHTML = carpeta_individuales
 	}
+
+	//Crear tarjetas de archivos
+	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	div_carpetas.innerHTML+=archivo_individuales
+
+	copia_archivo = 0
 	
 
 
@@ -258,6 +297,7 @@ function crear_carpeta() {
 	//Verifico si ya existe en la ruta actual
 
 	var isrepeat = estudiante_actual.carpetas.repetido(ruta_actual+"/"+nombre_carpeta);
+	var div_carpetas = document.getElementById("carpetas")
 
 	if(isrepeat){
 		//esta repetido
@@ -265,18 +305,34 @@ function crear_carpeta() {
 		nombre_carpeta+="_copia("+copia_carpeta+")";
 
 		estudiante_actual.carpetas.insertar(nombre_carpeta, ruta_actual)
-		var div_carpetas = document.getElementById("carpetas")
+		
 		var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 		div_carpetas.innerHTML = carpeta_individuales
 
 	} else {
 		estudiante_actual.carpetas.insertar(nombre_carpeta, ruta_actual)
-		var div_carpetas = document.getElementById("carpetas")
+		
 		var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 		div_carpetas.innerHTML = carpeta_individuales
 	}
 	
 	console.log(estudiante_actual.password)
+
+	//Crear tarjetas de archivos
+	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	div_carpetas.innerHTML+=archivo_individuales
+
+	//agrego accion al reporte de lista circular
+	var today = new Date();
+	var accion = "Se creo carpeta: "+nombre_carpeta
+	var fecha = today.toLocaleDateString("en-US");
+	var hora = today.toLocaleTimeString("en-US");
+	//console.log("-------")
+	//console.log("Accionn: "+accion)
+	//console.log("fecha: "+fecha)
+	//console.log("hora: "+hora)
+	estudiante_actual.bitacora.InsertarAlFinal(accion, fecha, hora);
+
 
 	//estudiante_actual.carpetas.insertar("Musica", "/")
 	//estudiante_actual.carpetas.insertar("Videos", "/")
@@ -294,34 +350,196 @@ function crear_carpeta() {
 	
 }
 
-function subir_archivo(e){
 
-	e.preventDefault();
 
-	const archivo = document.getElementById("archivo").files[0]; // obtener el archivo
+function subir_archivo(){
+
+	
 	const input_archivo = document.getElementById("archivo")
 
 	
-	var nombre_archivo = archivo.name
+	
 
 	var ruta_origen = input_archivo.value
 
-	console.log(nombre_archivo)
-	console.log(ruta_origen)
+	//obtengo ruta y nombre de archivo
+	var nombre_ruta_archivo = ruta_origen.replace(/^.*[\\\/]/, '')
 
-	var tarjeta_archivo = `
-	<a href="${nombre_archivo}" download="${nombre_archivo}">
-	<button type="button">Descargar</button>
-	</a>
-	`
 
-	var contenedor = document.getElementById("carpetas")
-	contenedor.innerHTML = tarjeta_archivo
+	//console.log(nombre_archivo)
+
+	//Verifico que no este repetido el archivo
+	var isRepeat = nodo_carpeta.archivos.verificar_repetido(nombre_ruta_archivo);
+
+	console.log(isRepeat)
+	if(isRepeat){
+		console.log("esta repetido")
+		copia_archivo++
+
+		nombre_ruta_archivo+="_copia("+copia_archivo+")"
+
+		nodo_carpeta.archivos.Insertar_archivo(nombre_ruta_archivo)
+
+	} else {
+
+		nodo_carpeta.archivos.Insertar_archivo(nombre_ruta_archivo)
+	}
+
+	console.log("-------")
+	nodo_carpeta.archivos.recorrer_cabeceras_filas()
+
+	//Crea tarjetas de carpetas
+	var div_carpetas = document.getElementById("carpetas")
+	var carpeta_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
+	div_carpetas.innerHTML = carpeta_individuales
+
+	//Crear tarjetas de archivos
+	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	div_carpetas.innerHTML+=archivo_individuales
+
+	//Accion de subir archivo
+	var today = new Date();
+	var accion = "Se subio archivo: "+nombre_ruta_archivo
+	var fecha = today.toLocaleDateString("en-US");
+	var hora = today.toLocaleTimeString("en-US");
+	//console.log("-------")
+	//console.log("Accionn: "+accion)
+	//console.log("fecha: "+fecha)
+	//console.log("hora: "+hora)
+	estudiante_actual.bitacora.InsertarAlFinal(accion, fecha, hora);
+
+	//console.log(nombre_ruta_archivo)
+
+	//var tarjeta_archivo = `
+	//<a href="${nombre_ruta_archivo}" download="${nombre_ruta_archivo}">
+	//<button type="button">Descargar</button>
+	//</a>
+	//`
+//
+	//var contenedor = document.getElementById("carpetas")
+	//contenedor.innerHTML = tarjeta_archivo
+
+}
+
+//Funciones para generar graficas
+
+function graficar_lista_cirular(){
+
+	//estudiante_actual.bitacora.Imprimir();
+	
+	//console.log(grafica_lista_circular)
+
+	var div_grafo_lista_circular = document.getElementById("lista_circular")
+	var grafica_lista_circular = estudiante_actual.bitacora.graficar()
+
+	div_grafo_lista_circular.innerHTML = grafica_lista_circular;
+
+
+}
+
+function otorgar_permisos() {
+
+	var user = document.getElementById("user_shared").value
+	var file = document.getElementById("file_shared").value
+
+	var lectura = document.getElementById("Lectura")
+	var escritura = document.getElementById("Escritura")
+
+	var permiso = ""
+
+	if(lectura.checked && escritura.checked){
+		permiso = "r-w"
+	} else if(lectura.checked){
+		permiso = "w"
+
+	} else if(escritura.checked){
+		permiso = "r"
+	}
+
+	//console.log("-----")
+	//console.log(user)
+	//console.log(file)
+	//console.log(permiso)
+
+	var existe_user = arbol_estudiantes.verificar_existe(user)
+	var existe_file = nodo_carpeta.archivos.verificar_repetido(file)
+
+	
+
+	if(existe_user && existe_file){
+		//inserto en matriz
+		console.log("Si existe usuario y archivo")
+		nodo_carpeta.archivos.Insertar(file, user, permiso)
+		//console.log(nodo_carpeta.archivos.graficar("hola"))
+		//nodo_carpeta.archivos.graficar_2(nodo_carpeta.folderName)
+		
+	} else {
+		console.log("Error")
+	}
+	
 
 }
 
 
+function graficar_matriz(){
 
+	var graphviz = ""
+
+	var empty = nodo_carpeta.archivos.lista_vacia();
+
+	if(empty){
+		alert("Error, no hay archivos para poder graficar")
+	} else {
+
+		var empty_users = nodo_carpeta.archivos.users_vacia();
+
+		if(empty_users){
+			var contenido = nodo_carpeta.archivos.graficar_solo_archivos(nodo_carpeta.folderName)
+			graphviz = "<img id=\"image_matriz\"\n"+
+			"   src=\'https://quickchart.io/graphviz?format=png&width=900&height=1200&graph="+ contenido +"\'"+
+			" />"
+
+			var contenedor_matriz = document.getElementById("matriz")
+			contenedor_matriz.innerHTML = graphviz
+
+
+		} else {
+			var contenido = nodo_carpeta.archivos.graficar_2(nodo_carpeta.folderName)
+			graphviz = "<h2>Reporte permisos</h2><img id=\"image_matriz\"\n"+
+			"   src=\'https://quickchart.io/graphviz?format=png&width=900&height=1200&graph="+ contenido +"\'"+
+			" />"
+
+			var contenedor_matriz = document.getElementById("matriz")
+			contenedor_matriz.innerHTML = graphviz
+
+		}
+
+	}
+
+
+
+}
+
+function graficar_arbol_carpetas(){
+
+	var graphviz = ""
+
+	var contenido = estudiante_actual.carpetas.graficar();
+
+	graphviz = "<h2>Reporte carpetas</h2><img id=\"image\"\n"+
+	"   src=\'https://quickchart.io/graphviz?format=png&width=800&height=1100&graph=digraph{"+ contenido +"}\'"+
+	" />"
+
+	var contenedor_arbol_carpetas = document.getElementById("arbol_n-ario")
+
+	contenedor_arbol_carpetas.innerHTML = graphviz
+
+
+
+
+
+
+}
 
 
 	
