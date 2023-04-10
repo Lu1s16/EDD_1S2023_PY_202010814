@@ -135,7 +135,7 @@ class Lista_Cabecera{
                     </center>
                 </div>
 	            `
-            } else if(tmp.archivo.includes(".jpeg")){
+            } else if(tmp.archivo.includes(".jpeg") || tmp.archivo.includes(".jpg")){
                 contenido += `
                 <div id="tarjeta_archivo">
                     <div id="imagen_archivo_jpeg">
