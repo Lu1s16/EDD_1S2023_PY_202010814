@@ -112,6 +112,7 @@ function Leer_usuarios(){
 	var ruta = input_usuarios.value
 	console.log(ruta)
 	var nombre_ruta = ruta.replace(/^.*[\\\/]/, '')
+	console.log(nombre_ruta);
 
 	const xhttp = new XMLHttpRequest();
 
