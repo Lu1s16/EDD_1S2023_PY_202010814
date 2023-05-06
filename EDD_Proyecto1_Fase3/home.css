@@ -1,0 +1,459 @@
+/*-----------------Login------------------*/
+.container {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+button[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+button[type="submit"]:hover {
+	background-color: #3e8e41;
+}
+
+#message {
+	text-align: center;
+	margin-top: 20px;
+	color: red;
+	font-weight: bold;
+}
+
+
+/*-----------------Usuario------------------*/
+.pagusuario {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#carpetas {
+	height: 500px;
+    width: 400px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    overflow: scroll;
+    left: 400px;
+    top: 150px;
+
+}
+
+/*Contenedor de permisos*/
+#permisos {
+    height: 400px;
+    width: 300px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    position: absolute;
+    left: 650px;
+    top: 220px;
+
+}
+
+#user_shared {
+    width: 150px;
+}
+
+#file_shared {
+    width: 150px;
+}
+
+
+/*Grafica de lista circular*/
+#lista_circular {
+    height: 300px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    overflow: scroll;
+   
+    left: 400px;
+    top: 100px;
+}
+
+#matriz {
+	height: 700px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    overflow: scroll;
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#arbol_n-ario {
+	height: 700px;
+    width: 1000px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    overflow: scroll;
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#Crear_carpeta {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 250px;
+
+
+}
+
+#carpeta_nueva {
+    position: absolute;
+	left: 1030px;
+	top: 200px;
+    width: 150px;
+    
+    
+
+}
+
+#folder_deleted {
+    position: absolute;
+	left: 1030px;
+	top: 350px;
+    width: 150px;
+    
+    
+
+}
+
+#Eliminar_carpeta {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1030px;
+	top: 400px;
+
+
+}
+
+
+
+/*boton de generar grafica de arbol n-ario*/
+#Reporte_carpetas {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 450px;
+	top: 150px;
+
+
+}
+
+/*Boton de generar grafica lista circular*/
+#Reporte_bitacora {
+    background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 850px;
+	top: 150px;
+
+}
+
+/*boton de generar Grafia de matriz*/
+#Reporte_archivos {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 650px;
+	top: 150px;
+
+
+}
+
+#buscador {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 200px;
+	top: 40px;
+
+}
+
+#cerrar_sesion_user {
+	background-color: #1db7bd; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 1000px;
+	top: 40px;
+}
+
+/*carpeta individual de la carpeta*/
+#carpeta_individual {
+    height: 160px;
+    width: 160px;
+    background-color: #1db7bd;
+    margin-bottom: 20px;
+
+    
+}
+
+#imagen_carpeta {
+    height: 120px;
+    width: 150px;
+    background-image: url("./imagenes/carpeta.png");
+    
+    background-size: cover;
+    
+
+    
+
+}
+/*Tarjeta individual del archivo*/
+
+#tarjeta_archivo {
+    height: 270px;
+    width: 160px;
+    background-color: #1db7bd;
+
+    margin-bottom: 20px;
+}
+
+#imagen_archivo_txt {
+    height: 150px;
+    width: 150px;
+    background-image: url("./imagenes/archivo_txt.png");
+    
+    background-size: cover;
+
+}
+
+#imagen_archivo_pdf {
+    height: 150px;
+    width: 150px;
+    background-image: url("./imagenes/archivo_pdf.png");
+    
+    background-size: cover;
+
+}
+
+#imagen_archivo_png {
+    height: 150px;
+    width: 150px;
+    background-image: url("./imagenes/archivo_png.png");
+    
+    background-size: cover;
+
+}
+
+#imagen_archivo_jpeg {
+    height: 150px;
+    width: 150px;
+    background-image: url("./imagenes/archivo_jpeg.png");
+    
+    background-size: cover;
+
+}
+
+
+
+
+#submit_file{
+    height: 30px;
+    width: 100px;
+    
+}
+
+
+
+
+/*-------------------------------------------------Admin------------------------------------------------*/
+.pagAdmin {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	position: absolute;
+    left: 200px;
+    top: 100px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.tabla_estudiantes {
+	height: 500px;
+    width: 400px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	left: 400px;
+    top: 100px;
+
+}
+
+#arbol_avl {
+	height: 700px;
+    width: 1000px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#cerrar_sesion_admin {
+	background-color: #1db7bd; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+#In-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Post-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Pre-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#Graficar_Arbol_avl {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+
+#Cargar_estudiantes{
+	background-color: #dce4dd; /* Color de fondo */
+    color: rgb(0, 0, 0); /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+
+}
+
+#texto_administrador{
+	font-size: 30px;
+	padding: 10px;
+
+
+}
+
+#texto_cargar_estudiantes{
+	font-size: 20px;
+	
+}
