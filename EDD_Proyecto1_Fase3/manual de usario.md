@@ -41,20 +41,20 @@ Tambien cuenta con un area donde el administrador puede ver cada bloque del bloc
 
 
 ## Estudiante
-El estudiante cuenta con la funcion de crear carpetas ingresando el nombre, eliminar carpetas ingresando el nombre de no existir se mostrara un alerta de erorr, subir archivos, tambien un area donde podra ver las carpetas creadas y archivos subidos. Tambien con un area donde podra otorgar permisos, ingresando el carnet del usuario, el nombre del archivo y el permiso que desea otorgar.
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/iD7myyM.png)
+El estudiante tambien cuenta con nuevas funciones las cuales se detallaran a continuacion: 
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/pltCASd.png)
 
-El estudiante tambien tendra la opcion de generar un reporte de una lista circular el cual contiene las acciones que realizo como tambien la fecha y hora en la que se realizo. Tambien puede generar un reporte de carpetas el cual muestra las carpetas creadas y por ultimo un reporte de permisos el cual muestra los la matriz con el carnet y archivo que se dio permiso. A continuacion se muestra ejemplos de los reportes
-
+Entre las nuevas opciones tiene la posibilidad de ver los archivos que se le compartio, tambien sera capaz de mandar mensajes a otros usuarios.
 
 
 ### Repporte carpetas
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/MHYUewC.png)
+El reporte de carpetas a diferencia de la version anterior, ahora se muestra como un grafo dirigido.
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/xPPh1v6.png)
 
-### Reporte matriz
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/r38r0jL.png)
+
 
 ### Reporte Bitacora
+El usuario aun podra ver su reporte de las acciones que haya realizado
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/XHBpGIr.png)
 
 
