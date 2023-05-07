@@ -7,7 +7,7 @@ A continuacion se muestra un manual donde se explica con detalle las nuevas func
 Al igual que la version anterior es posible iniciar sesion como administrador o como un usuario, para iniciar sesion como usuario debera ingresar su numero de carnet y su contraseña
 
 ## Admin
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/25F3tdc.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/KK6yXO1.png)
 
 La parte del administrador cuenta con nuevas funciones las cuales se detallan a continuacion
 
