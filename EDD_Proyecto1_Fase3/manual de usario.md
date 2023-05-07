@@ -26,12 +26,8 @@ Con este boton el administrador puede generar una tabla donde se muestra informa
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/w11UX7m.png)
 
 
-### Mostrar estudiantes pre-orden
-Con este boton la tabla que se mostraba al cargar el archivo json se actualizara y mostrara la tabla con el recorrido pre-orden
-
-
 ### Graficar arbol avl
-El administrador aun sera capaz de graficar el arbol avl, para ver de forma grafica los estudiantes en el sistema
+El administrador aun sera capaz de graficar el arbol avl, para ver de forma grafica los estudiantes en el sistema.
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Ra0WIxw.png)
 
 
@@ -40,7 +36,7 @@ Con este boton el administrador puede generar un reporte del blockchain donde se
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Nzb9a6i.png)
 
 Tambien cuenta con un area donde el administrador puede ver cada bloque del blockchain, este bloque contiene mas informacion que en el reporte anterior. Al pulsar el boton siguiente podra ir reocorriendo cada bloque.
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](hhttps://i.imgur.com/s6jT0Cx.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/s6jT0Cx.png)
 
 
 ## Estudiante
