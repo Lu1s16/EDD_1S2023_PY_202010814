@@ -1,57 +1,26 @@
 # Manual Tecnico
+A continuacion se muestra un manual tecnico para que otras personas con conocimiento en js y html puedan darle mantenimiento a la aplicacion.
 
 ## Index.html
 Este archivo contiene los elementos para la pagina de login, la pagina del admin y la pagina del estudiante. Para evitar que se muestren al mismo tiempo se uso un < div > que contiene todos los elementos de cada pagina y dependiendo de donde se encuentre el usuario se mostrara el < div > correspondiente y se oculataran los demas.
 
 ## Index.js
 Este archivo contiene toda la logica que maneja la pagina para su funcionamiento, las funciones que tiene son las siguientes:
-- Carga de estudiantes
+- Pasar estudiantes a tabla hash
 - Inicio de sesion
 - Subir archivos
 - Crear carpetas
 - Eliminar carpetas
+- Visualizar archivos compartidos
+- Enviar mensajes
 - Buscar carpetas
 - Otorgar permisos
 - Generar reportes
-
-## Matriz_dispersa.js
-Este archivo contiene la logica para el funcionamiento de una estructura de matriz dispersa, esta estructura se utilizo para el almacenamiento de los permisos que el estudiante otorgue a otros estudiantes, para esto almacenara en las coordenadas Y los archivos y en las coordenadas X el carnet del estudiante y en sus celdas el permiso que se le otorgo. Para coordenada se creo una lista enlazada y poder almacenar los datos. Este archivo cuenta con las siguientes funciones
-
-- ### Insertar
-  Esta funcion se encarga de insertar el permiso en la matriz buscando el     archivo y carnet para hacer las conexiones.
-  
-- ### Verificar_repetido
-  Esta funcion recibe como parametro el archivo para poder verificar si existe el archivo en la lista enlazada de la coordenada Y
-  
-- ### Lista_vacia
-  Esta funcion verifica si la lista enlazada donde se almacenan los archivos esta vacia
-
-- ### users_vacia
-  Esta funcion verifica si la lista enlazada que almacena los estudiantes esta vacia
-  
-- ### tarjetas_archivos
-  Esta funcion crea las tarjetas de los archivos subidos para que el usuario pueda visualizarlos de mejor manera ne la pagina
-  
-- ### Insertar_archivo
-  Esta funcion inserta solamente el archivo en la lista enlazada que corresponde la  coordenada Y de la matriz dispersa
-  
-- ### graficar
-  Esta funcion genera el codigo en graphviz para mostrar la grafica de la matriz dispersa
- 
-- ### graficar_solo_archivos
-  Esta funcion genera el codigo en graphviz para mostrar solo la lista de los archivos subidos.
-
-## Lista_circular.js
-Este archivo contiene la logica para la estructura de la lista circular simple, esta estructura almacenara las acciones que realice el estudiante, asi como tambien la fecha y hora en la que lo realizo. Este cuenta con las siguientes funciones:
-
-- ### InsertarAlFinal
-  Esta funcion recibe como parametro la accioo, fecha y hora e inserta al final de la lista
-  
-- ### graficar
-  Esta funcion genera el codigo en graphviz para graficar la lista circular simple.
+- Generar tabla de permisos
+- Generar tabla hash
 
 ## Arbol_nario.js
-Este archivo contiene la logica para la estructura del arbol n-ario, esta estructura almacena las carpetas que el estudiante cree. Este cuenta con las siguientes funciones:
+Este archivo a diferencia de la version anterior sufrio unos cuantos cambios, ya que ahora este sirve para generar el gafro dirigido. La logica se mantiene similar a excpecion de la graficacion que si tiene unos cambios:
  
 - ### insertar
   Esta funcion recibe como parametro el nombre de la carpeta y la ruta actual para hacer su insercion.
@@ -69,34 +38,25 @@ Este archivo contiene la logica para la estructura del arbol n-ario, esta estruc
   Esta funcion recibe como parametro el nombre de la carpeta y verifica si ya existe la carpeta en la ruta en la que se encuentre.
   
 - ### graficar
-  Esta funcion genera el codigo en graphviz para poder graficar el arbol n-ario.
+  Esta funcion genera el codigo en graphviz para poder graficar el grafo dirigido.
 
-## Arbol_avl.js
-Este archivo contiene la logica para la estructura de un arbol avl, esta estructura almacena los daots del estudiante, como su nombre, carnet y contraseña. Este cuenta con las siguientes funciones:
+## Blockchain.js
+Este archivo contiene la logica para la estructura de datos blockchain, el cual se maneja con una lista doblemente enlazada. Este guardara el index, timestamp que es la fecha actual, transmiter que es quien envia el mensaje, receiver quien es el que recibe el mensaje, el mensaje, el hash previo y el hash del nodo, en este caso manejarmos los nodos como bloques. Los metodos que se tuilizaron fueron las siguientes:
 
-- ### insertar
-  Esta fucnion recibe como parametro los datos del estudiante y hace la insercion, en caso de haber un desequilibro en el arbol se hace una rotacion dependiendo del caso.
-  
-- ### preorden
-  Esta funcion hace un recorrido pre-orden del arbol avl, esta funcion sirve para generar la tabla en pre-orden al momento de mostrarle al usuario los datos de cada estudiante.
-  
-- ### postorden
-  Esta funcion hace un recorrido post-orden del arbol avl, esta funcion sirve para generar la tabla en post-orden al momento de mostrarle al usuario los datos de cada estudiante
-  
-- ### inorden
-  Esta funcion hace un recorrido in-orden del arbol avl, esta funcion sirve para generar la tabla en in-orden al momento de mostrarle al usuario los datos de cada estudiante.
- 
-- ### verificar_existe
-  Esta fucnion recibe como parametro el carnet del estudiante y sirve para verificar si ya existe en el arbol
-  
-- ### buscarcarnet
-  Esta funcion recibe como parametro el carnet y contrasena del usuario, sirve para el inicio de sesion y busca el estudiante en el arbol.
-  
-- ### retornar_estudiante
-  Esta fucnion recibe como parametro el carnet y contrasena del usuario, sirve para retornar el nodo del estudiante.
-  
-- ### graficar_arbol
-  Esta funcion genera el codigo en graphviz para hacer la grafica del arbol avl.
+### InsertarAlFinal
+Este metodo encripta el mensaje y guarda los demas datos junto al mensaje encriptado al nodo y lo inserta al final de la lista.
+
+### getSha256
+Este metodo es el que encripta el mensaje, para eso se envia el mensaje y retorna el mensaje ya encriptado.
+
+### Imprimir_de_primero_ultimo
+Este metodo imprime en consola los datos de cada bloque.
+
+### graficar
+Este metodo grafica cada bloque del blockchain y retorna su imagen para ser mostrada al usuario.
+
+### graficar_individual
+Este metodo recibe una posicion, para poder graficar solo un bloque, se verifica si la posicion es menor al tamaño del blockchain para poder graficarlo.
 
 ## home.css
 Este archivo sirve para darle estilo a los diferentes elementos de la pagina.
