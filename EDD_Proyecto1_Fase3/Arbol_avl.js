@@ -1,6 +1,10 @@
 //exportar arbol nario
 import { arbol_nario } from "./Arbol_nario.js";
 import { ListaCircular } from "./Lista_circular.js";
+import { HashTable } from "./Tabla_hash.js";
+import { ListaCompartidos } from "./lista_compartidos.js";
+
+var tabla_estudiantes = new HashTable();
 
 
 class Nodo{
@@ -10,6 +14,7 @@ class Nodo{
         this.password = password;
         this.carpetas = new arbol_nario();
         this.bitacora = new ListaCircular();
+        this.compartidos = new ListaCompartidos();
         this.izquierda = null;
         this.derecha = null;
         this.altura = 0;
@@ -151,8 +156,21 @@ class AVL{
             console.log("valor=" +nodo.carnet);
             console.log("nombre= "+nodo.nombre);
             console.log("password= " + nodo.password);
-            console.log("---------------------")
+            console.log("-----------------*******----")
             this.in_orden(nodo.derecha);    
+        }
+    }
+    //Insertar en tabla hash
+    inordeninsertarhash(){
+        this.in_orden_insertar_hash(this.raiz);
+        return tabla_estudiantes;
+    }
+    in_orden_insertar_hash(nodo){
+        if(nodo!=null){
+            this.in_orden_insertar_hash(nodo.izquierda);
+            tabla_estudiantes.insert(nodo.carnet, nodo.nombre, nodo.password);
+            
+            this.in_orden_insertar_hash(nodo.derecha);    
         }
     }
 
@@ -319,6 +337,27 @@ class AVL{
 
 
 
+    retornar_estudiante_por_carnet(carnet) {
+
+        return this.retornarestudianteporcarnet(this.raiz, carnet);
+    }
+
+    retornarestudianteporcarnet(nodo, carnet){
+
+        if(!nodo){
+            return null;
+        }
+
+        if(nodo.carnet == parseInt(carnet)){
+            return nodo;
+        }
+
+        if(carnet < nodo.carnet){
+            return this.retornarestudianteporcarnet(nodo.izquierda, carnet);
+        } else {
+            return this.retornarestudianteporcarnet(nodo.derecha, carnet);
+        }
+    }
 
 
 
@@ -364,7 +403,7 @@ class AVL{
        
         
         var graphviz = "<img id=\"image\"\n"+
-        "   src=\'https://quickchart.io/graphviz?format=png&width=1000&height=1500&graph=digraph{"+ this.grafica +"}\'"+
+        "   src=\'https://quickchart.io/graphviz?format=png&graph=digraph{"+ this.grafica +"}\'"+
         " />"
 
 

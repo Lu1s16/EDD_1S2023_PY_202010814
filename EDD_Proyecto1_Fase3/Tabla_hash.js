@@ -17,15 +17,26 @@ class HashTable{
         this.capacidad = 7;
         // CANTIDAD DE ELEMENTOS INGRESADOS
         this.espaciosUsados = 0;
+
+       
     }
 
+
     // MÉTODO INSERTAR ELEMENTO
-    insert(carnet, nombre, password){
+    async insert(carnet, nombre, password){
         // OBTENER EL ÍNDICE DE LA FÓRMULA 
         // FÓRMULA: (SUMA ASCII's DEL CARNET) % CAPACIDAD ACTUAL 
         let indice = this.calcularIndice(carnet);
+
+        //encripto constraseña
+        var password_encriptado = await this.getSha256(password);
+        
+       
+        
+        
+
         // CREAR NUEVO NODO
-        let nodoNuevo = new HashNode(carnet, nombre, password);
+        let nodoNuevo = new HashNode(carnet, nombre, password_encriptado);
         // COMPROBAR QUE EL INDICE SEA MENOR QUE A CAPACIADAD
         if(indice < this.capacidad){
             // VERIFICAR SI EN EL LA POSICIÓN DEL ARRAY ES NULO
@@ -59,6 +70,19 @@ class HashTable{
             this.checkCapacidad();
         }
 
+    }
+
+    async getSha256(str){
+        // PASAR EL OBJETO A STRING
+        
+        // OBTENER LOS BYTES DEL STRING 
+        let bytes = new TextEncoder().encode(str);
+        // OBTENER BYTES DEL HASH
+        let hashBytes = await window.crypto.subtle.digest("SHA-256", bytes);
+        // PASAR EL HASH A STRING 
+        let hash = Array.prototype.map.call(new Uint8Array(hashBytes), x => ('00' + x.toString(16)).slice(-2)).join('');
+        // RETORNAR EL HASH
+        return hash;
     }
 
     // METODO PARA APLICAR LA FÓRMULA Y OBTENER EL ÍNDICE
@@ -168,6 +192,62 @@ class HashTable{
         }
         return null;
     }
+
+
+    tabla_hash(){
+        var tabla = "<center><h2>Estudiantes tabla hash</h2></center>\n<table border=\"1\", align=\"center\">\n"+
+        "\t <tr> \n"+
+        "\t\t <td>Carnet</td>\n"+
+        "\t\t <td>Nombre</td>\n"+
+        "\t\t <td>Password</td>\n"+
+        "\t </tr>\n"
+
+         for(let i = 0; i<this.table.length-1; i++){
+
+            if(this.table[i] != null){
+                tabla+=`
+                <tr>
+                    <td>${this.table[i].carnet}</td>
+                    <td>${this.table[i].nombre}</td>
+                    <td>${this.table[i].password}</td>
+                </tr>
+                `
+
+            }
+
+        }
+
+        tabla+="</table>"
+
+        return tabla;
+    }
+
+
+    recorrer_tabla(){
+
+        for(let i = 0; i<this.table.length-1; i++){
+
+            if(this.table[i] != null){
+                console.log("nombre: "+this.table[i].nombre);
+                console.log("carnet: "+this.table[i].carnet);
+                console.log("Password: "+this.table[i].password);
+                
+                
+                
+                console.log("----------------------------------")
+
+            }
+            
+
+        }
+
+    }
+
+
+      
+
+
+
 
 }
 export{HashTable}

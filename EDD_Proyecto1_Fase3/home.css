@@ -294,6 +294,15 @@ button[type="submit"]:hover {
     margin-bottom: 20px;
 }
 
+#tarjeta_compartido {
+    height: 300px;
+    width: 350px;
+    background-color: #1db7bd;
+    overflow: scroll;
+
+    margin-bottom: 20px;
+}
+
 #imagen_archivo_txt {
     height: 150px;
     width: 150px;
@@ -328,6 +337,21 @@ button[type="submit"]:hover {
     
     background-size: cover;
 
+
+
+}
+
+
+#compartidoswithme{
+    height: 800px;
+    width: 500px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    overflow: scroll;
+    left: 400px;
+    top: 150px;
+
 }
 
 
@@ -357,7 +381,7 @@ button[type="submit"]:hover {
 
 .tabla_estudiantes {
 	height: 500px;
-    width: 400px;
+    width: 800px;
     overflow: scroll;
     background-color: rgb(16, 235, 235);
     border-radius: 15px;
@@ -403,7 +427,7 @@ button[type="submit"]:hover {
     cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
 
 }
-#Post-Orden {
+#Hash {
 	background-color: #31c94a; /* Color de fondo */
     color: white; /* Color del texto */
     font-size: 16px; /* Tamaño de fuente */
@@ -413,7 +437,7 @@ button[type="submit"]:hover {
     cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
 
 }
-#Pre-Orden {
+#Tabla_hash {
 	background-color: #31c94a; /* Color de fondo */
     color: white; /* Color del texto */
     font-size: 16px; /* Tamaño de fuente */
@@ -456,4 +480,17 @@ button[type="submit"]:hover {
 #texto_cargar_estudiantes{
 	font-size: 20px;
 	
+}
+
+
+#tabla_permisos{
+    height: 500px;
+    width: 900px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	left: 400px;
+    top: 100px;
+
 }

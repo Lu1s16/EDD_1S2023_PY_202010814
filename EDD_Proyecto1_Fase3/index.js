@@ -6,9 +6,11 @@ const message = document.getElementById('message');
 //importaciones
 import {AVL} from "./Arbol_avl.js";
 import { HashTable } from "./Tabla_hash.js";
+import { ListaSimple } from "./Lista_permisos.js";
 
 var arbol_estudiantes = new AVL();
 var tabla_estudiantes = new HashTable();
+var lista_permisos = new ListaSimple();
 
 var estudiante_actual
 var nodo_carpeta;
@@ -65,19 +67,8 @@ form.addEventListener('submit', function(event) {
 		document.getElementById("container").style.display = "none";
 		document.getElementById("pagAdmin").style.display = "block";
 		
-		//tabla_estudiantes.insert(8318054,"Hugo Rosal","12341");
-		//tabla_estudiantes.insert(9616453,"Luis Pirir","12342");
-		//tabla_estudiantes.insert(199919737,"Williams Constanza","12343");
-		//tabla_estudiantes.insert(200715321,"Jim Melendez","12344");
-		//tabla_estudiantes.insert(201403669,"William Ambrocio","12345");
-		//tabla_estudiantes.insert(201403877,"Ebany Larios","12346");
-		//tabla_estudiantes.insert(201404028,"Helber Urias","12347");
-		//tabla_estudiantes.insert(201503933,"Manolo Ramirez","12348");
-		//tabla_estudiantes.insert(201503933,"Jose Boguerin","12349");
-		//tabla_estudiantes.insert(201602404,"Kevin Secaida","123410");
-		// EJEMPLO DE BÚSQUEDA
-		//console.log(tabla_estudiantes.search(201602404));
-		//muestro el de usuario o admin
+		
+		//muestro el admin
 
 	} else {
 		//Inicio de sesion como estudiante
@@ -100,13 +91,16 @@ form.addEventListener('submit', function(event) {
 			var carpetas_individuales = estudiante_actual.carpetas.show_folders(ruta_actual);
 			div_carpetas.innerHTML = carpetas_individuales
 
-			
+			//creo las tarjetas de los archivos compartidos
+			var contenido = estudiante_actual.compartidos.tarjeta_archivos();
+			var div_prueba = document.getElementById("compartidoswithme");
+			div_prueba.innerHTML = contenido;
 
 			//obtengo el nodo carpeta raiz
 			nodo_carpeta = estudiante_actual.carpetas.getFolder(ruta_actual)
 
 			//Crear tarjetas de archivos que existan
-			var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+			var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 			div_carpetas.innerHTML+=archivo_individuales
 			
 
@@ -114,8 +108,6 @@ form.addEventListener('submit', function(event) {
 			var contenedor_arbol_carpetas = document.getElementById("arbol_n-ario")
 			contenedor_arbol_carpetas.innerHTML = "<h2>Reporte carpetas</h2>"
 	
-			var contenedor_matriz = document.getElementById("matriz")
-			contenedor_matriz.innerHTML = "<h2>Reporte archivos</h2>"
 
 			var div_grafo_lista_circular = document.getElementById("lista_circular")
 			div_grafo_lista_circular.innerHTML = "<h2>Reporte bitacora</h2>"
@@ -143,12 +135,31 @@ const input_usuarios = document.getElementById("Cargar_estudiantes")
 
 //para botones normales
 document.getElementById("In-Orden").onclick = graficar_tabla_in_orden;
-document.getElementById("Post-Orden").onclick = graficar_tabla_post_orden;
-document.getElementById("Pre-Orden").onclick = graficar_tabla_preo_orden;
+document.getElementById("Hash").onclick = pasar_datos_a_hash;
+document.getElementById("Tabla_hash").onclick = graficar_tabla_hash;
 document.getElementById("Graficar_Arbol_avl").onclick = graficar_arbol_url;
-
+document.getElementById("permisos").onclick = generar_tabla_permisos;
 
 document.getElementById("cerrar_sesion_admin").onclick = close_admin
+
+function generar_tabla_permisos(){
+
+	var contenido = document.getElementById("tabla_permisos");
+	contenido.innerHTML = lista_permisos.tabla_permisos();
+
+}
+
+
+//funcion para pasar los datos del avl a la tabla hash
+function pasar_datos_a_hash(){
+
+	tabla_estudiantes = arbol_estudiantes.inordeninsertarhash();
+	//tabla_estudiantes.recorrer_tabla();
+
+	alert("Se cargaron los estudiantes en la tabla hash")
+
+
+}
 
 function close_admin() {
 	document.getElementById("container").style.display = "block";
@@ -178,28 +189,17 @@ function graficar_tabla_in_orden(){
 
 }
 
-function graficar_tabla_post_orden(){
 
-	
+
+function graficar_tabla_hash(){
 
 	var div_tabla = document.getElementById("tabla_estudiantes")
-	var tabla_usuarios_post_orden = arbol_estudiantes.tabla_post_orden()
+	var tabla_hash = tabla_estudiantes.tabla_hash();
 
-	div_tabla.innerHTML = tabla_usuarios_post_orden;
+	div_tabla.innerHTML = tabla_hash;
 
 }
 
-function graficar_tabla_preo_orden(){
-
-	var div_tabla = document.getElementById("tabla_estudiantes")
-	var tabla_usuarios_pre_orden = arbol_estudiantes.tabla_pre_orden();
-
-	div_tabla.innerHTML = tabla_usuarios_pre_orden;
-
-}
-
-//("change", funcion)
-input_usuarios.addEventListener("change", Leer_usuarios)
 
 
 //-------------------------------------Usuario---------------------------------------
@@ -215,7 +215,6 @@ document.getElementById("Eliminar_carpeta").onclick = eliminar_carpeta
 document.getElementById("submit_file").onclick = subir_archivo
 document.getElementById("Reporte_bitacora").onclick = graficar_lista_cirular
 document.getElementById("get_user").onclick = otorgar_permisos
-document.getElementById("Reporte_archivos").onclick = graficar_matriz
 document.getElementById("Reporte_carpetas").onclick = graficar_arbol_carpetas
 
 
@@ -240,7 +239,7 @@ function eliminar_carpeta(){
 	div_carpetas.innerHTML = carpeta_individuales
 
 	//Crear tarjetas de archivos
-	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 	div_carpetas.innerHTML+=archivo_individuales
 
 	//agrego accion al reporte de lista circular
@@ -288,7 +287,7 @@ function buscar_carpeta(){
 	div_carpetas.innerHTML = carpeta_individuales
 
 	//Crear tarjetas de archivos
-	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 	div_carpetas.innerHTML += archivo_individuales
 
 	copia_archivo = 0
@@ -329,7 +328,7 @@ function crear_carpeta() {
 	console.log(estudiante_actual.password)
 
 	//Crear tarjetas de archivos
-	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 	div_carpetas.innerHTML+=archivo_individuales
 
 	//agrego accion al reporte de lista circular
@@ -379,7 +378,7 @@ function subir_archivo(){
 	//console.log(nombre_archivo)
 
 	//Verifico que no este repetido el archivo
-	var isRepeat = nodo_carpeta.archivos.verificar_repetido(nombre_ruta_archivo);
+	var isRepeat = nodo_carpeta.node.archivos.verificar_repetido(nombre_ruta_archivo);
 
 	console.log(isRepeat)
 	if(isRepeat){
@@ -388,15 +387,15 @@ function subir_archivo(){
 
 		nombre_ruta_archivo+="_copia"+copia_archivo
 
-		nodo_carpeta.archivos.Insertar_archivo(nombre_ruta_archivo)
+		nodo_carpeta.node.archivos.Insertar_archivo(nombre_ruta_archivo)
 
 	} else {
 
-		nodo_carpeta.archivos.Insertar_archivo(nombre_ruta_archivo)
+		nodo_carpeta.node.archivos.Insertar_archivo(nombre_ruta_archivo)
 	}
 
 	console.log("-------")
-	nodo_carpeta.archivos.recorrer_cabeceras_filas()
+	nodo_carpeta.node.archivos.recorrer_cabeceras_filas()
 
 	//Crea tarjetas de carpetas
 	var div_carpetas = document.getElementById("carpetas")
@@ -404,7 +403,7 @@ function subir_archivo(){
 	div_carpetas.innerHTML = carpeta_individuales
 
 	//Crear tarjetas de archivos
-	var archivo_individuales = nodo_carpeta.archivos.tarjetas_archivos();
+	var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 	div_carpetas.innerHTML+=archivo_individuales
 
 	//Accion de subir archivo
@@ -447,6 +446,7 @@ function graficar_lista_cirular(){
 
 }
 
+//funcion para los permisos
 function otorgar_permisos() {
 
 	var user = document.getElementById("user_shared").value
@@ -472,16 +472,29 @@ function otorgar_permisos() {
 	//console.log(permiso)
 
 	var existe_user = arbol_estudiantes.verificar_existe(user)
-	var existe_file = nodo_carpeta.archivos.verificar_repetido(file)
+	var existe_file = nodo_carpeta.node.archivos.verificar_repetido(file)
 
 	
 
 	if(existe_user && existe_file){
+
+
+		var estudiante_destino = arbol_estudiantes.retornar_estudiante_por_carnet(user);
+
 		//inserto en matriz
 		console.log("Si existe usuario y archivo")
-		nodo_carpeta.archivos.Insertar(file, user, permiso)
+		nodo_carpeta.node.archivos.Insertar(file, user, permiso)
 		//console.log(nodo_carpeta.archivos.graficar("hola"))
 		//nodo_carpeta.archivos.graficar_2(nodo_carpeta.folderName)
+
+		//inserto los permisos a la lista simple
+		lista_permisos.InsertarAlFinal(estudiante_actual.nombre, user, ruta_actual, file, permiso, file)
+		
+
+		//inserto el archivo en el estudiante destino
+		estudiante_destino.compartidos.InsertarAlFinal(file);
+		
+
 		alert("Se otorgaron permisos correctamente")
 		
 	} else {
@@ -489,46 +502,6 @@ function otorgar_permisos() {
 		alert("Error Ussuario/archivo no existen")
 	}
 	
-
-}
-
-
-function graficar_matriz(){
-
-	var graphviz = ""
-
-	var empty = nodo_carpeta.archivos.lista_vacia();
-
-	if(empty){
-		alert("Error, no hay archivos para poder graficar")
-	} else {
-
-		var empty_users = nodo_carpeta.archivos.users_vacia();
-
-		if(empty_users){
-			var contenido = nodo_carpeta.archivos.graficar_solo_archivos(nodo_carpeta.folderName)
-			graphviz = "<img id=\"image_matriz\"\n"+
-			"   src=\'https://quickchart.io/graphviz?format=png&width=900&height=1200&graph="+ contenido +"\'"+
-			" />"
-
-			var contenedor_matriz = document.getElementById("matriz")
-			contenedor_matriz.innerHTML = graphviz
-
-
-		} else {
-			var contenido = nodo_carpeta.archivos.graficar_2(nodo_carpeta.folderName)
-			graphviz = "<h2>Reporte permisos</h2><img id=\"image_matriz\"\n"+
-			"   src=\'https://quickchart.io/graphviz?format=png&width=900&height=1200&graph="+ contenido +"\'"+
-			" />"
-
-			var contenedor_matriz = document.getElementById("matriz")
-			contenedor_matriz.innerHTML = graphviz
-
-		}
-
-	}
-
-
 
 }
 

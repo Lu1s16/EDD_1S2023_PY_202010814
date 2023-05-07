@@ -2,13 +2,14 @@
 import {Matriz_d} from "./Matriz_dispersa.js";
 
 class nodo{
-    constructor(folderName){
+    constructor(folderName, weight){
         this.folderName = folderName;
         this.files = [];
         this.children = []; //todos los nodos hijos
         //carpetas de la ruta actual
         this.archivos = new Matriz_d(); //matriz dispersa para los archivos
         this.id = null; //para la grafica
+        this.weight = weight;
     }
 }
 
@@ -22,11 +23,12 @@ class arbol_nario{
     }
 
     insertar(folderName, fatherPath){
-        var nuevo_nodo = new nodo(folderName);
-        var father_nodo = this.getFolder(fatherPath);
+        var {node:father_nodo, weight} = this.getFolder(fatherPath);
+        var nuevo_nodo = new nodo(folderName, weight);
+        
 
         if(father_nodo){
-            this.size++;
+            this.size+=1;
             nuevo_nodo.id = this.size;
             father_nodo.children.push(nuevo_nodo);
         } else {
@@ -39,9 +41,10 @@ class arbol_nario{
     getFolder(path){
         //Padre sea una "/"
         //console.log(path);
+        let weight = 2;
 
         if(path == this.root.folderName){
-            return this.root;
+            return {node: this.root, weight: weight};;
         } else {
             var temp = this.root;
             var folders = path.split("/");
@@ -55,8 +58,9 @@ class arbol_nario{
                 }
 
                 temp = folder;
+                weight++;
             }
-            return temp;
+            return {node: temp, weight: weight};
         }
 
     }
@@ -68,16 +72,16 @@ class arbol_nario{
         var posicion = 0;
         var encontrado = false;
 
-        for(let i = 0; i < folder_eliminar.children.length; i++){
+        for(let i = 0; i < folder_eliminar.node.children.length; i++){
 
-            if(folder_eliminar.children[i].folderName == carpeta){
+            if(folder_eliminar.node.children[i].folderName == carpeta){
                 posicion = i;
                 encontrado = true;
             }
         }
 
         if(encontrado){
-            folder_eliminar.children.splice(posicion, 1);
+            folder_eliminar.node.children.splice(posicion, 1);
             alert("se elimino correctamente la carpeta " + carpeta)
             
         } else {
@@ -93,8 +97,8 @@ class arbol_nario{
 
         var ruta_actual = this.getFolder(path);
 
-        for(let i = 0; i < ruta_actual.children.length; i++){
-            console.log(ruta_actual.children[i]);
+        for(let i = 0; i < ruta_actual.node.children.length; i++){
+            console.log(ruta_actual.node.children[i]);
 
             div_carpetas += `
             <div id="carpeta_individual">
@@ -102,7 +106,7 @@ class arbol_nario{
 
 		        </div>
 				
-		        <center><p>${ruta_actual.children[i].folderName}</p></center>
+		        <center><p>${ruta_actual.node.children[i].folderName}</p></center>
             
             </div>
             `
@@ -144,23 +148,41 @@ class arbol_nario{
         let nodes = "";
         let connections = "";
         let node = this.root;
+        let en_raiz = true;
         let queue = [];
 
         queue.push(node);
 
         while(queue.length !== 0){
             let len = queue.length;
+
+            
+
             for(let i = 0; i < len; i++){
+
+
+
                 let node = queue.shift();
                 nodes += `S_${node.id}[label="${node.folderName}"];\n`;
                 node.children.forEach( item => {
-                    connections += `S_${node.id} -> S_${item.id};\n`
-                    queue.push(item);
+
+                    if(len == 1 && en_raiz){
+                        connections += `S_${node.id} -> S_${item.id} [label="1"];\n`
+                        queue.push(item);
+                        
+                
+                    }else {
+                        connections += `S_${node.id} -> S_${item.id} [label="${node.weight}"];\n`
+                        queue.push(item);
+
+                    }
+                    
                 });
             }
+            en_raiz = false;
         }
 
-        return 'node[shape="record"];\n' + nodes +'\n'+ connections;
+        return '\nlayout=neato; \nedge[dir=none];\n' + nodes +'\n'+ connections;
     }
 
 }
