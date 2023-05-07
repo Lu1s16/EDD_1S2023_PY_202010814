@@ -103,6 +103,13 @@ form.addEventListener('submit', function(event) {
 			var archivo_individuales = nodo_carpeta.node.archivos.tarjetas_archivos();
 			div_carpetas.innerHTML+=archivo_individuales
 			
+			//creo tarjetas de mensajes enviados
+			var enviados = estudiante_actual.enviados.tarjeta_enviados()
+			document.getElementById("mensajes_enviados").innerHTML = enviados;
+
+			//creo tarjetas de mensajes recibidos
+			var recibidos = estudiante_actual.recibidos.tarjeta_recibidos()
+			document.getElementById("mensajes_recibidos").innerHTML = recibidos;
 
 			//reseteo los divs de reportes
 			var contenedor_arbol_carpetas = document.getElementById("arbol_n-ario")
@@ -215,7 +222,7 @@ document.getElementById("submit_file").onclick = subir_archivo
 document.getElementById("Reporte_bitacora").onclick = graficar_lista_cirular
 document.getElementById("get_user").onclick = otorgar_permisos
 document.getElementById("Reporte_carpetas").onclick = graficar_arbol_carpetas
-
+document.getElementById("enviar").onclick = enviar_mensaje;
 
 function close_user() {
 	document.getElementById("container").style.display = "block";
@@ -246,10 +253,7 @@ function eliminar_carpeta(){
 	var accion = "Se elimino carpeta: "+folder
 	var fecha = today.toLocaleDateString("en-US");
 	var hora = today.toLocaleTimeString("en-US");
-	//console.log("-------")
-	//console.log("Accionn: "+accion)
-	//console.log("fecha: "+fecha)
-	//console.log("hora: "+hora)
+	
 	estudiante_actual.bitacora.InsertarAlFinal(accion, fecha, hora);
 
 
@@ -356,6 +360,41 @@ function crear_carpeta() {
 
 	console.log(estudiante_actual.carpetas.graficar())
 	
+}
+
+function enviar_mensaje(){
+
+	var user = document.getElementById("user_destino").value;
+	var mensaje = document.getElementById("mensaje").value;
+
+	console.log("User: " + user + " mensaje: " + mensaje);
+
+	var existe_user = arbol_estudiantes.verificar_existe(user);
+
+	if(existe_user){
+
+		//guardo mensaje y user en lista enviados
+		estudiante_actual.enviados.enviar(mensaje, user);
+
+
+		//guardo mensaje y user origen en lista recibidos del usuario destino
+		var user_destino = arbol_estudiantes.retornar_estudiante_por_carnet(user);
+
+		user_destino.recibidos.recibir(mensaje, estudiante_actual.carnet);
+
+		alert("Se envio el mensaje correctamente")
+
+
+		//creo tarjetas de los mensajes enviados
+
+		var tarjetas_enviados = estudiante_actual.enviados.tarjeta_enviados();
+		document.getElementById("mensajes_enviados").innerHTML = tarjetas_enviados;
+
+	} else {
+		alert("Usuario no existente")
+	}
+
+
 }
 
 

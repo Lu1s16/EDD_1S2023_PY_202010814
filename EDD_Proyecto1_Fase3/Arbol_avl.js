@@ -3,6 +3,8 @@ import { arbol_nario } from "./Arbol_nario.js";
 import { ListaCircular } from "./Lista_circular.js";
 import { HashTable } from "./Tabla_hash.js";
 import { ListaCompartidos } from "./lista_compartidos.js";
+import { ListaEnviados } from "./Lista_enviados.js";
+import { ListaRecibidos } from "./Lista_recibidos.js";
 
 var tabla_estudiantes = new HashTable();
 
@@ -15,6 +17,8 @@ class Nodo{
         this.carpetas = new arbol_nario();
         this.bitacora = new ListaCircular();
         this.compartidos = new ListaCompartidos();
+        this.enviados = new ListaEnviados();
+        this.recibidos = new ListaRecibidos();
         this.izquierda = null;
         this.derecha = null;
         this.altura = 0;

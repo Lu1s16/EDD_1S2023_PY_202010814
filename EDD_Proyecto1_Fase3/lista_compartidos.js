@@ -80,17 +80,7 @@ class ListaCompartidos{
                     <textarea rows="10" cols="40"></textarea>
                     
                 </div>
-                `;
-
-               
-
-                
-                
-                
-
-                
-
-                
+                `;   
 
             }
 

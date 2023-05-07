@@ -89,6 +89,35 @@ button[type="submit"]:hover {
 
 }
 
+#mensajeria {
+    height: 400px;
+    width: 300px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+
+}
+
+#mensajes_enviados{
+    height: 400px;
+    width: 300px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+
+}
+
+#mensajes_recibidos{
+    height: 400px;
+    width: 300px;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+}
+
 #user_shared {
     width: 150px;
 }
@@ -97,6 +126,9 @@ button[type="submit"]:hover {
     width: 150px;
 }
 
+#user_destino {
+    width: 150px;
+}
 
 /*Grafica de lista circular*/
 #lista_circular {
@@ -284,7 +316,27 @@ button[type="submit"]:hover {
     
 
 }
+/*********Area de tarjetas*********/
 /*Tarjeta individual del archivo*/
+#tarjeta_recibido{
+    height: 120px;
+    width: 250px;
+    background-color: #1db7bd;
+    overflow: scroll;
+
+    margin-bottom: 20px;
+
+}
+
+#tarjeta_enviado{
+    height: 120px;
+    width: 250px;
+    background-color: #1db7bd;
+    overflow: scroll;
+
+    margin-bottom: 20px;
+
+}
 
 #tarjeta_archivo {
     height: 270px;
@@ -349,8 +401,9 @@ button[type="submit"]:hover {
 	border-radius: 15px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     overflow: scroll;
-    left: 400px;
-    top: 150px;
+    position:absolute;
+    left: 600px;
+    top: 1800px;
 
 }
 
