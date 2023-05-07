@@ -58,6 +58,68 @@ Este metodo grafica cada bloque del blockchain y retorna su imagen para ser most
 ### graficar_individual
 Este metodo recibe una posicion, para poder graficar solo un bloque, se verifica si la posicion es menor al tamaño del blockchain para poder graficarlo.
 
+## Lista_compartidos.js
+Este archivo contiene la logica para el manejo de los archivos compartidos. Para esto se utilizo una lista enlazada simple. A continuacion se explica los metodos creados:
+
+### InsertarAlFinal
+Este metodo recibe el archivo compartido y lo guarda en un nodo para despues insertarlo al final de la lista.
+
+### tarjeta_archivos
+Este metodo crea las tarjetas de los archivos compartidos para mostrarselos al usuario.
+
+## Lista_enviados.js
+Este archivo contiene la logica para almacenar los mensajes enviados por el usuario. Para esto se utilizo una lista simple enlazada. A continuacion se explica los metodos creados:
+
+### enviar
+Este metodo recibe el mensaje y usuario destino para almacenarlos en un nodo y despues poderlo insertar en la lista simple enlazada.
+
+### tarjeta_enviados
+Este metodo crea las tarjetas de los mensajes enviados para ser mostrado al usuairo.
+
+## Lista_recibidos.js
+Este archivo contiene la logica paara almacenar los mensajes que el usuario reciba. Para esto tambien se utilizo una lista simple enlazada. A continuacion se explican los metodos creados:
+
+### recibir
+Este metodo recibe el mensaje y usuario quien recibe el mensaje, esto lo almacena en un nodo y por ultimo el nodo se inserta en la lista simple enlazada.
+
+### tarjeta_recibidos
+Este metodo creara las tarjetas de los mensajes recibidos para ser mostrado al usuario.
+
+
+## Lista_permisos.js
+Este archivo contiene la logica para almacenar los permisos que el usuario otorga. Para esto se utilizo una lista simplemente enlazada. A continuacion se explican los metodos creados.
+
+### InsertarAlFinal
+Este metodo recibe el propietario, usuario destino, ruta, nombre archivo y los permisos otorgados, todo esto lo guarda en un nodo para poder insertarlo al final de la lista.
+
+### tabla_permisos
+Este metodo se encarga de crear la tabla de permisos para ser mostrada al administrador.
+
+
+## Tabla_hash.js
+Este archivo contiene la logica para insertar los usuarios en la tabla hash. Para esto se utilizo un array. A continuacion se explican los metodo usados para su funcionamiento:
+
+### insertar
+Este metodo recibe el nombre, carnet y contraseña de cada estudiante. Primero encripta la contraseña para poder guardarlo en un nodo, luego se hacen validaciones para insertarlo en una posicion del Array.
+
+### CalcularIndice
+Este metodo usa una formula para calcular el indice donde debe ser ingresado el nuevo nodo.
+
+### RecalcularIndice
+Este metodo recalcula el indice donde debe ir el nuevo nodo, esto en caso de que la posicion en el indice calculado en CalcularIndice estuviera ocupado.
+
+### nuevoIndice
+Este metoodo crea un nuevo indice en caso de que de que sea mayor al tamaño actual del Array.
+
+### RevisarCapacidad
+Este metodo utiliza el porcentaje de utilizacion para poder reorganizar los elmentos en el Array.
+
+### GenerarNuevaCapacidad
+Este metodo genera una nueva capacidad al Array.
+
+### tabla_hash
+Este metodo crea la tabla con los datos de la tabla hash para ser mostrada al administrador.
+
 ## home.css
 Este archivo sirve para darle estilo a los diferentes elementos de la pagina.
 
@@ -71,20 +133,14 @@ A continuacion se muestra algunos algoritmos que se utilizaron para el funcionam
  4. Si existe agregar "copia" al nombre de la carpeta y agregarlo al arbol n-ario
  5. Caso contrario solo se agrega al arbol n-ario
 
-- ### Graficar matriz dispersa
- 1. Verificar si existen archivos
- 2. Si no existen los archivos mostrar un mensaje de erorr
- 3. Caso contrario verificar si ya se otorgaron permisos
- 4. Si no se otorgaron permisos solo se grafican los archivos
- 5. Caso contrario se grafica la matriz completa.
-
 - ### otorgar permisos
  1. Obtener el carnet del usuario
  2. Obtener el nombre del archivo
  3. Obtener el tipo de permiso
  4. Verificar que existe ael usuario y el archivo
  5. Si no existe mostrar mensaje de error
- 6. Caso contrario insertar en la matriz
+ 6. Caso contrario insertar en la matriz.
+ 7. Luego tambien se inserta los datos en la Lista de permisos.
 
 - ### subir archivo
  1. Obtener la carpeta actual
@@ -92,3 +148,13 @@ A continuacion se muestra algunos algoritmos que se utilizaron para el funcionam
  3. Verifico que no este reptido
  4. Si esta repetido, agregar un alias de "copia" al archivo y almacenarlo en la coordenada Y de la matriz dispersa
  5. Caso contrario solo almacenarlo en la coordenada Y de la matriz dispersa.
+
+
+- ### Enviar mensajes
+ 1. Obtiene el usuario destino
+ 2. Se obtiene el mensaje
+ 3. Se verifica que el usuario exista
+ 4. Si existe se procede al paso 5 caso contrario paso 7
+ 5. Se guarda el mensaje y usuario destino en la lista de enviados
+ 6. Se obtiene el usuario destino para poder almacenar el mensaje y usuario origen
+ 7. Se termina el proceso
