@@ -28,14 +28,14 @@ class HashTable{
         let indice = this.calcularIndice(carnet);
 
         //encripto constraseña
-        var password_encriptado = await this.getSha256(password);
+        //var password_encriptado = await this.getSha256(password);
         
        
         
         
 
         // CREAR NUEVO NODO
-        let nodoNuevo = new HashNode(carnet, nombre, password_encriptado);
+        let nodoNuevo = new HashNode(carnet, nombre, password);
         
         if(indice < this.capacidad){
             
