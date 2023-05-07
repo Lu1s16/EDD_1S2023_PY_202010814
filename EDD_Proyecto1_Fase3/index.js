@@ -7,10 +7,12 @@ const message = document.getElementById('message');
 import {AVL} from "./Arbol_avl.js";
 import { HashTable } from "./Tabla_hash.js";
 import { ListaSimple } from "./Lista_permisos.js";
+import { Blockchain } from "./Blockchain.js";
 
 var arbol_estudiantes = new AVL();
 var tabla_estudiantes = new HashTable();
 var lista_permisos = new ListaSimple();
+var blockchain = new Blockchain();
 
 var estudiante_actual
 var nodo_carpeta;
@@ -145,13 +147,39 @@ document.getElementById("Hash").onclick = pasar_datos_a_hash;
 document.getElementById("Tabla_hash").onclick = graficar_tabla_hash;
 document.getElementById("Graficar_Arbol_avl").onclick = graficar_arbol_url;
 document.getElementById("permisos").onclick = generar_tabla_permisos;
+document.getElementById("Graficar_Blockchain").onclick = Graficar_blockchain;
+document.getElementById("siguiente").onclick = Graficar_bloques;
 
 document.getElementById("cerrar_sesion_admin").onclick = close_admin
+
+var index = 0;
+var size_blockchain = blockchain.size
+
+function Graficar_bloques(){
+	console.log(size_blockchain)
+	if(index >= size_blockchain){
+		index = 0;
+	}
+
+	var bloque = blockchain.graficar_individual(index);
+	document.getElementById("bloques").innerHTML = bloque;
+
+	index++;
+
+}
+
+function Graficar_blockchain(){
+
+	var nodos_blockchain = blockchain.graficar()
+	document.getElementById("blockchain").innerHTML = nodos_blockchain
+	blockchain.Imprimir_de_primero_ultimo();
+}
 
 function generar_tabla_permisos(){
 
 	var contenido = document.getElementById("tabla_permisos");
 	contenido.innerHTML = lista_permisos.tabla_permisos();
+	
 
 }
 
@@ -382,14 +410,38 @@ function enviar_mensaje(){
 
 		user_destino.recibidos.recibir(mensaje, estudiante_actual.carnet);
 
-		alert("Se envio el mensaje correctamente")
+		
 
 
 		//creo tarjetas de los mensajes enviados
 
 		var tarjetas_enviados = estudiante_actual.enviados.tarjeta_enviados();
 		document.getElementById("mensajes_enviados").innerHTML = tarjetas_enviados;
+		
+		//obtengo hora y fecha de envio
+		var today = new Date();
+		
+		//fecha en formato DD-MM-YY
+		const dia = ("0"+today.getDate()).slice(-2);
+		const mes = ("0"+(today.getMonth()+1)).slice(-2);
+		const year = today.getFullYear().toString().slice(-2);
 
+		const fecha = `${dia}-${mes}-${year}`;
+
+		const horas = ("0"+today.getHours()).slice(-2);
+		const minutos = ("0"+today.getMinutes()).slice(-2);
+		const segundos = ("0"+today.getSeconds()).slice(-2);
+
+		const hora = `${horas}:${minutos}:${segundos}`;
+
+		var fecha_actual = fecha+"::"+hora;
+		console.log(fecha_actual);
+		//guardo datos en el blockchain
+		blockchain.InsertarAlFinal(fecha_actual, estudiante_actual.carnet, user, mensaje)
+		size_blockchain++;
+		
+		
+		alert("Se envio el mensaje correctamente")
 	} else {
 		alert("Usuario no existente")
 	}

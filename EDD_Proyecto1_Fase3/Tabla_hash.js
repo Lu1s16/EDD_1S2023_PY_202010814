@@ -28,14 +28,16 @@ class HashTable{
         let indice = this.calcularIndice(carnet);
 
         //encripto constraseña
-        var password_encriptado = await this.getSha256(password);
-        
+        //var password_encriptado = await this.getSha256(password);
+        const clave = "clave123";
+
+        const mensajeCifrado = CryptoJS.AES.encrypt(password, clave).toString()
        
         
         
 
         // CREAR NUEVO NODO
-        let nodoNuevo = new HashNode(carnet, nombre, password_encriptado);
+        let nodoNuevo = new HashNode(carnet, nombre, mensajeCifrado);
         
         if(indice < this.capacidad){
             
@@ -68,18 +70,18 @@ class HashTable{
 
     }
 
-    async getSha256(str){
-        // PASAR EL OBJETO A STRING
-        
-        // OBTENER LOS BYTES DEL STRING 
-        let bytes = new TextEncoder().encode(str);
-        // OBTENER BYTES DEL HASH
-        let hashBytes = await window.crypto.subtle.digest("SHA-256", bytes);
-        // PASAR EL HASH A STRING 
-        let hash = Array.prototype.map.call(new Uint8Array(hashBytes), x => ('00' + x.toString(16)).slice(-2)).join('');
-        // RETORNAR EL HASH
-        return hash;
-    }
+    //async getSha256(str){
+    //    // PASAR EL OBJETO A STRING
+    //    
+    //    // OBTENER LOS BYTES DEL STRING 
+    //    let bytes = new TextEncoder().encode(str);
+    //    // OBTENER BYTES DEL HASH
+    //    let hashBytes = await window.crypto.subtle.digest("SHA-256", bytes);
+    //    // PASAR EL HASH A STRING 
+    //    let hash = Array.prototype.map.call(new Uint8Array(hashBytes), x => ('00' + x.toString(16)).slice(-2)).join('');
+    //    // RETORNAR EL HASH
+    //    return hash;
+    //}
 
     // METODO PARA APLICAR LA FÓRMULA Y OBTENER EL ÍNDICE
     calcularIndice(carnet){

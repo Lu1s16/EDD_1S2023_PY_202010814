@@ -103,6 +103,7 @@ button[type="submit"]:hover {
     height: 400px;
     width: 300px;
     background-color: rgb(16, 235, 235);
+    overflow: scroll;
 	border-radius: 15px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     
@@ -114,6 +115,7 @@ button[type="submit"]:hover {
     width: 300px;
     background-color: rgb(16, 235, 235);
 	border-radius: 15px;
+    overflow: scroll;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     
 }
@@ -444,6 +446,8 @@ button[type="submit"]:hover {
 
 }
 
+/*****Area de reportes admin******/
+
 #arbol_avl {
 	height: 700px;
     width: 1000px;
@@ -456,6 +460,45 @@ button[type="submit"]:hover {
     top: 100px;
 
 }
+
+#arbol_avl {
+	height: 700px;
+    width: 1000px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+
+}
+
+#blockchain {
+    height: 700px;
+    width: 1000px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+}
+
+#bloques {
+    height: 600px;
+    width: 900px;
+    overflow: scroll;
+    background-color: rgb(16, 235, 235);
+	border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    
+    left: 400px;
+    top: 100px;
+}
+
+/******Area de botones*****/
 
 #cerrar_sesion_admin {
 	background-color: #1db7bd; /* Color de fondo */
@@ -471,6 +514,16 @@ button[type="submit"]:hover {
 }
 
 #In-Orden {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+#siguiente {
 	background-color: #31c94a; /* Color de fondo */
     color: white; /* Color del texto */
     font-size: 16px; /* Tamaño de fuente */
@@ -508,6 +561,29 @@ button[type="submit"]:hover {
     border: none; /* Borde sin estilo */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+
+#Graficar_Blockchain {
+	background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
+}
+
+#permiso{
+    background-color: #31c94a; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Borde sin estilo */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+
 
 }
 
