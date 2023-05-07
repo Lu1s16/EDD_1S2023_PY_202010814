@@ -33,10 +33,11 @@ El administrador aun sera capaz de graficar el arbol avl, para ver de forma graf
 
 ### Graficar blockchain
 Con este boton el administrador puede generar un reporte del blockchain donde se muestra informacion de los mensajes compartidos entre los estudiantes. 
+
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Nzb9a6i.png)
 
 Tambien cuenta con un area donde el administrador puede ver cada bloque del blockchain, este bloque contiene mas informacion que en el reporte anterior. Al pulsar el boton siguiente podra ir reocorriendo cada bloque.
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/s6jT0Cx.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/1GoWo9N.png)
 
 
 ## Estudiante
