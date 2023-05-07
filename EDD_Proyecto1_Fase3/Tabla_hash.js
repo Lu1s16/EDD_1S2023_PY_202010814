@@ -11,11 +11,11 @@ class HashNode{
 class HashTable{
 
     constructor(){
-        // ARRAY QUE ALMACENARÁ LOS VALORES
+        
         this.table = new Array(7);
-        // CAPACIDAD DEL ARRAY(IRÁ CAMBIANDO A MEDIDA QUE SE AGREGUEN ELEMENTOS)
+        
         this.capacidad = 7;
-        // CANTIDAD DE ELEMENTOS INGRESADOS
+        
         this.espaciosUsados = 0;
 
        
@@ -24,8 +24,7 @@ class HashTable{
 
     // MÉTODO INSERTAR ELEMENTO
     async insert(carnet, nombre, password){
-        // OBTENER EL ÍNDICE DE LA FÓRMULA 
-        // FÓRMULA: (SUMA ASCII's DEL CARNET) % CAPACIDAD ACTUAL 
+        
         let indice = this.calcularIndice(carnet);
 
         //encripto constraseña
@@ -37,32 +36,29 @@ class HashTable{
 
         // CREAR NUEVO NODO
         let nodoNuevo = new HashNode(carnet, nombre, password_encriptado);
-        // COMPROBAR QUE EL INDICE SEA MENOR QUE A CAPACIADAD
+        
         if(indice < this.capacidad){
-            // VERIFICAR SI EN EL LA POSICIÓN DEL ARRAY ES NULO
+            
             if(this.table[indice] == null){
-                // SE AGREGA EL VALOR EN LA POSICIÓN
+                
                 this.table[indice] = nodoNuevo;
-                // AGREGAR A LOS ESPACIOS USADOS
+                
                 this.espaciosUsados++;
             }else{
-                // OPERACIONES CUANDO EXISTE UNA COLISIÓN
-                // NÚMERO DE INTENTOS PARA LA FÓRMULA DE COLISIÓNES
+                
                 let contador = 1;
-                // REASIGNAR EL ÍNDICE 
-                // FÓRMULA DE COLISIÓNES: 
-                // [(SUM ASCII's CARNET) % CAPACIDAD ACTUAL] + INTENTOS ^ 2
+               
                 indice = this.recalcularIndice(carnet, contador);
-                // RECALCULAR HASTA ENCONTRAR UN ÍNDICE QUE ESTÉ VACÍO EN EL ARRAY
+                
                 while(this.table[indice] != null){
-                    // AUMENTAR EL CONTADOR 
+                    
                     contador++;
-                    // BUSCAR OTRA POSICIÓN CON EL CONTADOR AUMENTADO
+                    
                     indice = this.recalcularIndice(carnet, contador);
                 }
-                // ASIGNAR ESPACIO AL ÍNDICE
+                
                 this.table[indice] =  nodoNuevo;
-                // AGREGAR A LOS ESPACIOS USADOS
+                
                 this.espaciosUsados++;
             }
 

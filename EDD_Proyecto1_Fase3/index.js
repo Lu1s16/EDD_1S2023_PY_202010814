@@ -130,8 +130,7 @@ form.addEventListener('submit', function(event) {
 
 //-------------------------------------Admin-----------------------------------------
 
-//para tipo input
-const input_usuarios = document.getElementById("Cargar_estudiantes")
+
 
 //para botones normales
 document.getElementById("In-Orden").onclick = graficar_tabla_in_orden;
