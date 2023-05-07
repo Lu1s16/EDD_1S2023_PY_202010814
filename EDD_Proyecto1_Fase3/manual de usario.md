@@ -57,4 +57,18 @@ El reporte de carpetas a diferencia de la version anterior, ahora se muestra com
 El usuario aun podra ver su reporte de las acciones que haya realizado
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/XHBpGIr.png)
 
+### Enviar mensajes
+Como se menciono anteriormente el usuario sera capaz de mandar mensajes a otros usuarios. Para eso debera ingresar el usuario a quien desea mandar el mensaje y escribir en un textarea el mensaje, y por ultimo dar click en el boton enviar.
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/LCv5DgH.png)
+
+Tambien contara con un apartado donde podra ver los mensajes que envio y los mensajes recibidos.
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/S6GeMzv.png)
+
+### Area de archivos compartidos
+Por ultimo el usuario podra ver los archivos que se le compartieron, podra ver el nombre del archivo y su contenido. En el caso de imagenes, se mostrara en una etiqueta img, en el caso de los archivos pdf se mostraran en una etiqueta iframe y con los archivos de texto se mostraran en una etiqueta textarea
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/VxWf7Rd.png)
+
 
