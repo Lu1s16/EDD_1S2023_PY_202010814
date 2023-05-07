@@ -14,21 +14,34 @@ La parte del administrador cuenta con nuevas funciones las cuales se detallan a 
 ### Pasar usuario a tabla hash
 En esta ocacion los usuarios ya estan almacenados en el sistema, por lo que el administrador puede pasarlos a una tabla hash. En este caso se muestra tambien la contraseña, solo que estara encriptada
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/qM6S6Kr.png)
+### Mostrar estudiantes Tabla hash
+Con este boton se mostrara la tabla hash con los datos de los usuarios
 
-### Mostrar estudiantes in-orden
-Con este boton la tabla que se mostraba al cargar el archivo json se actualizara y mostrara la tabla con el recorrido in-orden
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/r030JMp.png)
 
-### Mostrar estudiantes pos-orden
-Con este boton la tabla que se mostraba al cargar el archivo json se actualizara y mostrara la tabla con el recorrido pos-orden
+### Mostrar tabla permisos
+Con este boton el administrador puede generar una tabla donde se muestra informacion de los permisos, como el propietario, destino, ruta, archivo y permiso otorgado. Tambien sera capaz de descargar los archivos.
+
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/w11UX7m.png)
+
 
 ### Mostrar estudiantes pre-orden
 Con este boton la tabla que se mostraba al cargar el archivo json se actualizara y mostrara la tabla con el recorrido pre-orden
 
 
 ### Graficar arbol avl
-Este boton permite al administrador generar una grafica del arbol avl. A continuacion se muestra un ejemplo de como se veria un arbol avl al momento de graficarlo
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/M23VXmf.png)
+El administrador aun sera capaz de graficar el arbol avl, para ver de forma grafica los estudiantes en el sistema
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Ra0WIxw.png)
+
+
+### Graficar blockchain
+Con este boton el administrador puede generar un reporte del blockchain donde se muestra informacion de los mensajes compartidos entre los estudiantes. 
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Nzb9a6i.png)
+
+Tambien cuenta con un area donde el administrador puede ver cada bloque del blockchain, este bloque contiene mas informacion que en el reporte anterior. Al pulsar el boton siguiente podra ir reocorriendo cada bloque.
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](hhttps://i.imgur.com/s6jT0Cx.png)
+
 
 ## Estudiante
 El estudiante cuenta con la funcion de crear carpetas ingresando el nombre, eliminar carpetas ingresando el nombre de no existir se mostrara un alerta de erorr, subir archivos, tambien un area donde podra ver las carpetas creadas y archivos subidos. Tambien con un area donde podra otorgar permisos, ingresando el carnet del usuario, el nombre del archivo y el permiso que desea otorgar.
