@@ -262,6 +262,7 @@ function close_user() {
 
 //Elimina la carpeta obtneiendo el nombre de un input tipo text
 function eliminar_carpeta(){
+	console.log(ruta_actual)
 
 	var folder = document.getElementById("folder_deleted").value
 
