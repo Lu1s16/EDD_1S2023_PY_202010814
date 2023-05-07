@@ -1,18 +1,18 @@
 # Manual de usuario
-A continuacion se muestra un manual donde se explica con detalle las funcionaidades del programa pra que le usuario pueda usarlo con mayor facilidad. Este programa cuenta con las siguientes paginas
+A continuacion se muestra un manual donde se explica con detalle las nuevas funcionalidades que tiene la aplicacion GoDrive
 
 ## Login
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/Hs8GzBv.png)
 
-Esta pagina permite al ususario iniciar sesion como administrador o como estudiante, para iniciar sesion como estudiante debera ingresar su carnet y contraseña, en el caso de ser administrador debera ingresar "admin" como usuario y "admin" como contraseña
+Al igual que la version anterior es posible iniciar sesion como administrador o como un usuario, para iniciar sesion como usuario debera ingresar su numero de carnet y su contraseña
 
 ## Admin
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/25F3tdc.png)
 
-Esta pagina muestra las diferentes funciones que tiene el administrador. Las cuales son las siguientes
+La parte del administrador cuenta con nuevas funciones las cuales se detallan a continuacion
 
-### Cargar estudiantes
-permite al administrador subir un archivo json para cargar los estudiantes. Al cargarse se mostrara una tabla con el recorrido in-orden, este mostrara el nombre y carnet de cada estudiante.
+### Pasar usuario a tabla hash
+En esta ocacion los usuarios ya estan almacenados en el sistema, por lo que el administrador puede pasarlos a una tabla hash. En este caso se muestra tambien la contraseña, solo que estara encriptada
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://i.imgur.com/qM6S6Kr.png)
 
